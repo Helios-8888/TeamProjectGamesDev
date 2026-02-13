@@ -106,7 +106,7 @@ public class EnemyAIController : MonoBehaviour
     {
         if (patrolPoints == null || patrolPoints.Length == 0)
         {
-            StopHorizontal();
+            //Idle
             return;
         }
 
@@ -130,7 +130,7 @@ public class EnemyAIController : MonoBehaviour
         float dist = Vector3.Distance(Flatten(transform.position), Flatten(player.position));
         if (dist <= stopDistance)
         {
-            StopHorizontal();
+            //Enemy has reached the position
             return;
         }
 
@@ -148,7 +148,6 @@ public class EnemyAIController : MonoBehaviour
         }
         else
         {
-            StopHorizontal();
 
             // Optional: rotate slowly while searching
             transform.Rotate(0f, 90f * Time.fixedDeltaTime, 0f);
@@ -202,12 +201,6 @@ public class EnemyAIController : MonoBehaviour
         Vector3 currentFlat = Flatten(current);
 
         Vector3 dir = (targetFlat - currentFlat);
-        if (dir.sqrMagnitude < 0.0001f)
-        {
-            StopHorizontal();
-            return;
-        }
-
         dir.Normalize();
 
         // Smooth turn
@@ -218,13 +211,11 @@ public class EnemyAIController : MonoBehaviour
         }
 
         Vector3 vel = dir * speed;
-        rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
+        rb.AddForce(vel, ForceMode.VelocityChange); //Do not directly modify velocity. Rb.Add Force is much better as long as you change the friction values (as I did above)
+
+        //rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
     }
 
-    private void StopHorizontal()
-    {
-        rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
-    }
 
     private static Vector3 Flatten(Vector3 v) => new Vector3(v.x, 0f, v.z);
 
