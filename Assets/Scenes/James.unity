@@ -280,7 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 9058658389161352531}
     - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: chaseSpeed
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
+      propertyPath: patrolSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1703061651230138752, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: m_Name
