@@ -75,6 +75,14 @@ public class PlayerMovement : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        //Just for testing
+        if (context.performed)
+        {
+            if (TryGetComponent<EntityHealth>(out EntityHealth health))
+            {
+                health.DamageHP(1);
+            }
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
