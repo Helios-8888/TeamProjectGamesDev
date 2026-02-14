@@ -274,25 +274,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 9058658389161352531}
-    - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
-      propertyPath: chaseSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
-      propertyPath: patrolSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1703061651230138752, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7578534351276125235, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
-      propertyPath: m_Drag
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8975733411922348671, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1788,22 +1772,6 @@ PrefabInstance:
     - target: {fileID: 4614234641862447352, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: JumpForce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: MoveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: AirFriction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: GroundFriction
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: CameraTransform

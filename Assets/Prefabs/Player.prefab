@@ -126,9 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grounded: 0
-  MoveSpeed: 5
-  JumpForce: 3
-  GroundFriction: 5
+  MoveSpeed: 2
+  JumpForce: 5
+  GroundFriction: 6
   AirFriction: 0
   CameraTransform: {fileID: 0}
 --- !u!54 &7700289240707861232

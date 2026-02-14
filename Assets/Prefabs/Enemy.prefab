@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703061651230138752}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.99144495, z: -0, w: 0.13052604}
+  m_LocalRotation: {x: 0, y: -0.9914449, z: 0, w: 0.13052626}
   m_LocalPosition: {x: 3.86, y: 1.78, z: 18.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -121,7 +121,7 @@ Rigidbody:
   m_GameObject: {fileID: 1703061651230138752}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -154,8 +154,8 @@ MonoBehaviour:
   state: 0
   player: {fileID: 0}
   patrolPoints: []
-  patrolSpeed: 2
-  chaseSpeed: 4
+  patrolSpeed: 0.5
+  chaseSpeed: 0.67
   turnSpeed: 10
   arriveDistance: 0.6
   faceMovementDirection: 1
