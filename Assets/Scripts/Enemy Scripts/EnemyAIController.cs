@@ -8,7 +8,7 @@ public class EnemyAIController : MonoBehaviour
     [SerializeField] private State state = State.Patrol;
 
     [Header("References")]
-    [SerializeField] private Transform player; // assign in Inspector, OR use Player tag
+    [SerializeField] private Transform player; 
     [SerializeField] private Transform[] patrolPoints;
 
     [Header("Movement")]
@@ -23,8 +23,8 @@ public class EnemyAIController : MonoBehaviour
     [Range(0, 360)]
     [SerializeField] private float viewAngle = 90f;
     [SerializeField] private float eyeHeight = 1.6f;
-    [SerializeField] private LayerMask targetMask;   // set to Player layer
-    [SerializeField] private LayerMask obstacleMask; // set to Walls/Obstacles layer
+    [SerializeField] private LayerMask targetMask; 
+    [SerializeField] private LayerMask obstacleMask;
 
     [Header("Chase / Search")]
     [SerializeField] private float stopDistance = 1.2f;
@@ -192,7 +192,7 @@ public class EnemyAIController : MonoBehaviour
     }
 
     // -------------------------
-    // MOVEMENT HELPERS
+    // MOVEMENT
     // -------------------------
 
     private void MoveTowards(Vector3 worldTarget, float speed)
@@ -231,7 +231,7 @@ public class EnemyAIController : MonoBehaviour
     // -------------------------
     // DEBUG DRAW (Scene view)
     // -------------------------
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() // this shows a gizmo in scene view which tells you which direction the enemies cone of vision is 
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, viewRadius);
