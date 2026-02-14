@@ -1713,12 +1713,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
+      propertyPath: state
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 9058658389161352531}
     - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: chaseSpeed
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1633533416602906030, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: viewRadius
