@@ -2095,11 +2095,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 347910865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1778582796 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4614234641862447352, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-  m_PrefabInstance: {fileID: 9058658389161352530}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1797732805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,34 +2350,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 2623313364333341073, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
+      propertyPath: PlayerHealthbar
       value: 
-      objectReference: {fileID: 9058658389161352535}
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerMovement, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 54652999}
     - target: {fileID: 4614234641862447352, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2434,42 +2405,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4614234641862447352, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9058658389161352539}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
 --- !u!4 &9058658389161352531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7633836449442446383, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
   m_PrefabInstance: {fileID: 9058658389161352530}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9058658389161352535 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-  m_PrefabInstance: {fileID: 9058658389161352530}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778582796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db599fb19c76af4b9cebb925be3fdd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9058658389161352539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778582796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318e1074802c950479b5ec52bacba369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerHealthbar: {fileID: 54652999}
-  PlayerHealth: {fileID: 0}
-  inventory: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
