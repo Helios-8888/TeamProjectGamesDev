@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public float GroundFriction = 5f;
     public float AirFriction = 0f;
     public Transform CameraTransform;
+    public GameObject bulletPrefab;
+    public Transform bulletspawn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -78,10 +80,15 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         //Just for testing
         if (context.performed)
         {
-            if (TryGetComponent<EntityHealth>(out EntityHealth health))
-            {
-                health.DamageHP(15);
-            }
+            Instantiate(bulletPrefab, bulletspawn.position, bulletspawn.rotation);
+            
+            
+            
+                if (TryGetComponent<EntityHealth>(out EntityHealth _HP))
+                {
+                    _HP.DamageHP(15);
+                }
+            
         }
     }
 

@@ -4,14 +4,16 @@ public class EntityHealth : MonoBehaviour
 {
     [SerializeField] public int MaxHP = 100;
     [SerializeField] protected int _HP;
+    
     public int HP
     {
         get {  return _HP; }
     }
-
+  
     private void Start()
     {
         _HP = MaxHP;
+        
     }
 
     public void DamageHP(int damage)
