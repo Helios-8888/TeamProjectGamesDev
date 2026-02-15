@@ -26,7 +26,7 @@ public class EntityHealth : MonoBehaviour
         }
         if (IsDead())
         {
-            //kill entity
+            Die();
         }
     }
 
@@ -47,5 +47,10 @@ public class EntityHealth : MonoBehaviour
     public bool IsDead()
     {
         return _HP <= 0;
+    }
+
+    public void Die()
+    {
+        Debug.Log($"{gameObject.name} died.");
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour, Supermarket.IPlayerActions
+public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 {
 
     [Header("Movement")]
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour, Supermarket.IPlayerActions
         {
             if (TryGetComponent<EntityHealth>(out EntityHealth health))
             {
-                health.DamageHP(1);
+                health.DamageHP(15);
             }
         }
     }
