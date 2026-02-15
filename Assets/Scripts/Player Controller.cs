@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour, Supermarket.IPlayerActions
+public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 {
 
     [Header("Movement")]
@@ -75,6 +75,14 @@ public class PlayerMovement : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        //Just for testing
+        if (context.performed)
+        {
+            if (TryGetComponent<EntityHealth>(out EntityHealth health))
+            {
+                health.DamageHP(15);
+            }
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
