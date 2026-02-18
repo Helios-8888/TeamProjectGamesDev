@@ -854,7 +854,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1162,21 +1162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
---- !u!114 &742229365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742229363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5749a15877167964abf6f2d45eedb0f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 330585545}
-  interactableText: {fileID: 891677178}
-  interactbaleDistance: 5
 --- !u!114 &742229367 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -7704126572698547057, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
@@ -1527,7 +1512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6958994d6b7864dbe0f5f341efb106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - 
 --- !u!4 &1195317472
 Transform:
   m_ObjectHideFlags: 0
@@ -1647,9 +1633,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4614234641862447352, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 742229365}
     - targetCorrespondingSourceObject: {fileID: 4614234641862447352, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       insertIndex: -1
       addedObject: {fileID: 742229364}

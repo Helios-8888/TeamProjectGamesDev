@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.performed && currentTargetedInteractable != null)
+        if(context.started && currentTargetedInteractable != null)
         {
             currentTargetedInteractable.Interact();
             playerInventory.AddItem(currentTargetedInteractable.interactableName);
