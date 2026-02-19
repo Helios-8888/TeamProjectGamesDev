@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5589395007820876796}
   - component: {fileID: 3713713119992258233}
   - component: {fileID: 5990220068137203289}
+  - component: {fileID: 8810292793457435315}
   - component: {fileID: 7700289240707861232}
   - component: {fileID: 1379828919868295775}
   - component: {fileID: -7704126572698547057}
@@ -165,6 +166,24 @@ MonoBehaviour:
   GroundFriction: 6
   AirFriction: 0
   CameraTransform: {fileID: 0}
+  playerCamera: {fileID: 0}
+  interactableText: {fileID: 0}
+  interactbaleDistance: 5
+--- !u!114 &8810292793457435315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614234641862447352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b8423d90e478440ac355837daf3b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHealthbar: {fileID: 0}
+  PlayerHealth: {fileID: -7704126572698547057}
+  ShoppinglistUI: {fileID: 0}
 --- !u!54 &7700289240707861232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -361,5 +380,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealthbar: {fileID: 0}
-  PlayerHealth: {fileID: 0}
+  PlayerHealth: {fileID: -7704126572698547057}
   inventory: []
