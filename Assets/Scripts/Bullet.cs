@@ -4,11 +4,16 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
     public float lifeTime = 2f;
+    
 
     void Start()
     {
         // Destroy bullet after a set time
+        
         Destroy(gameObject, lifeTime);
+           
+        
+        
     }
 
     void Update()
@@ -21,5 +26,6 @@ public class Bullet : MonoBehaviour
     {
         // Destroy bullet on impact
         Destroy(gameObject);
+        
     }
 }

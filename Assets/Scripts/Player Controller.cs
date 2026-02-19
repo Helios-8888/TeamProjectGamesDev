@@ -1,5 +1,3 @@
-using InteractableItems;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,20 +14,8 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public float GroundFriction = 5f;
     public float AirFriction = 0f;
     public Transform CameraTransform;
-    public GameObject bulletPrefab;
+    public GameObject Bullet;
     public Transform bulletspawn;
-    [SerializeField]
-    Camera playerCamera;
-
-    [SerializeField]
-    TextMeshProUGUI interactableText;
-
-    [SerializeField]
-    float interactbaleDistance = 5f;
-
-    IInteractable currentTargetedInteractable;
-
-    Inventory playerInventory;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,16 +23,11 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         _RB = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        playerInventory = GetComponent<Inventory>();    
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateCurrentInteractable();
-
-        UpdateInteractableText();
-
         if (Grounded)
         {
             _RB.linearDamping = GroundFriction; //When grounded apply friction to the player
@@ -99,25 +80,29 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         //Just for testing
         if (context.performed)
         {
-            Instantiate(bulletPrefab, bulletspawn.position, bulletspawn.rotation);
-            
-            
-            
+            if (Bullet != null)
+            {
+                GameObject bulletInstance = Instantiate(Bullet, bulletspawn.position, Quaternion.identity);
                 if (TryGetComponent<EntityHealth>(out EntityHealth _HP))
                 {
                     _HP.DamageHP(15);
                 }
+            }
+            else
+                {
+                    Debug.LogError("Bullet prefab is not assigned or has been destroyed.");
+                }
+           
+            
+            
+            
+                
             
         }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.started && currentTargetedInteractable != null)
-        {
-            currentTargetedInteractable.Interact();
-            playerInventory.AddItem(currentTargetedInteractable.interactableName);
-        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -132,29 +117,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
             }
         }
     }
-    void UpdateCurrentInteractable()
-    {
-        var ray = playerCamera.ViewportPointToRay(new Vector2(0.5f, 0.5f));
-
-        Physics.Raycast(ray, out var hit, interactbaleDistance);
-
-        currentTargetedInteractable = hit.collider?.GetComponent<IInteractable>();
-
-    }
-
-    void UpdateInteractableText()
-    {
-        if (currentTargetedInteractable == null)
-        {
-            interactableText.text = string.Empty;
-            return;
-        }
-
-        interactableText.text = currentTargetedInteractable.InteractableMessage;
-    }
-
-
-public void OnCrouch(InputAction.CallbackContext context)
+    public void OnCrouch(InputAction.CallbackContext context)
     {
     }
 
