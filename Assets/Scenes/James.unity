@@ -2359,9 +2359,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 330585545}
+    - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 2101641902}
+    - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
+      propertyPath: interactableText
+      value: 
+      objectReference: {fileID: 1559425932}
     - target: {fileID: 7633836449442446383, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
