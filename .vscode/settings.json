@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
     },
-    "dotnet.defaultSolution": "TeamProjectGamesDev.sln"
+    "dotnet.defaultSolution": "TeamProjectGamesDev-Attacking.sln"
 }
