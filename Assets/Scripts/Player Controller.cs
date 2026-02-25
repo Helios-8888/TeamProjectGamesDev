@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour, Supermarket.IPlayerActions
+public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 {
 
     [Header("Movement")]
@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour, Supermarket.IPlayerActions
     public float GroundFriction = 5f;
     public float AirFriction = 0f;
     public Transform CameraTransform;
+    public GameObject Bullet;
+    public Transform bulletspawn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -75,6 +77,28 @@ public class PlayerMovement : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        //Just for testing
+        if (context.performed)
+        {
+            if (Bullet != null)
+            {
+                GameObject bulletInstance = Instantiate(Bullet, bulletspawn.position, Quaternion.identity);
+                if (TryGetComponent<EntityHealth>(out EntityHealth _HP))
+                {
+                    _HP.DamageHP(15);
+                }
+            }
+            else
+                {
+                    Debug.LogError("Bullet prefab is not assigned or has been destroyed.");
+                }
+           
+            
+            
+            
+                
+            
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
