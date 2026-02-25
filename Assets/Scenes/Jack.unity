@@ -2044,7 +2044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d649ba139064e4f957128671112cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1160247157}
+  bulletPrefab: {fileID: 0}
   currentBullet: {fileID: 0}
   bulletspawn: {fileID: 1607445490}
   bulletForce: 20
