@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public float GroundFriction = 5f;
     public float AirFriction = 0f;
     public Transform CameraTransform;
-    public GameObject Bullet;
+    public Bullet Bullet;
     public Transform bulletspawn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -78,27 +78,25 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public void OnAttack(InputAction.CallbackContext context)
     {
         //Just for testing
-       // if (context.performed)
-      //  {
-           // if (Bullet != null)
-           // {
-            //    GameObject bulletInstance = Instantiate(Bullet, bulletspawn.position, Quaternion.identity);
-            //    if (TryGetComponent<EntityHealth>(out EntityHealth _HP))
-            //    {
-           //         _HP.DamageHP(15);
-            //    }
-          //  }
-          //  else
-               // {
-                //    Debug.LogError("Bullet prefab is not assigned or has been destroyed.");
-                //}
+        if (context.performed)
+        {
+            if (Bullet != null)
+            {
+                Bullet bulletInstance = Instantiate(Bullet, bulletspawn.position + CameraTransform.forward *2f, Quaternion.identity);
+                bulletInstance.ShootBullet(CameraTransform.forward);
+                
+            }
+            else
+                {
+                    Debug.LogError("Bullet prefab is not assigned or has been destroyed.");
+                }
            
             
             
             
                 
             
-       // }
+       }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
