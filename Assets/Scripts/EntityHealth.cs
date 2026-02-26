@@ -49,7 +49,7 @@ public class EntityHealth : MonoBehaviour
 
     public bool IsDead()
     {
-        
+        //return _HP <= 0;
        
         return _HP <= 0;
     }

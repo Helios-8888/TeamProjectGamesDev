@@ -2,30 +2,25 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private Rigidbody rb;
     public float speed = 20f;
     public float lifeTime = 2f;
     
 
-    void Start()
+    public void ShootBullet(Vector3 direction)
     {
-        // Destroy bullet after a set time
-        
-        Destroy(gameObject, lifeTime);
-           
-        
-        
+        rb = GetComponent<Rigidbody>();
+        rb.AddForce(direction.normalized * speed, ForceMode.Impulse);  
+        Destroy(this.gameObject, lifeTime);
     }
-
-    void Update()
-    {
-        // Move bullet forward
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         // Destroy bullet on impact
-        Destroy(gameObject);
+        if (collision.gameObject.TryGetComponent<EntityHealth>(out EntityHealth hp))
+        {
+            hp.DamageHP(15);
+        }
+        Destroy(this.gameObject);
         
     }
 }
