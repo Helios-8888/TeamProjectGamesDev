@@ -5,24 +5,52 @@ using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
-    public List<string> items = new List<string>();
+    public PlayerData playerData;
+    public List<InteractableItem> PlayerInventory = new List<InteractableItem>();
+    public List<InteractableItem> ShoppingList = new List<InteractableItem>();
 
-    public void AddItem(string itemName)
+    public void AddItem(InteractableItem item)
     {
-        items.Add(itemName);
-        Debug.Log(itemName + "added to inventory.");
+        PlayerInventory.Add(item);
+        Debug.Log(item.itemName + "added to inventory.");
     }
-    public void RemoveItem(string itemName)
+    public void RemoveItem(InteractableItem item)
     {
-        if (items.Contains(itemName))
+        if (PlayerInventory.Contains(item))
         {
-            items.Remove(itemName);
-            Debug.Log(itemName + " removed from inventory.");
+            PlayerInventory.Remove(item);
+            Debug.Log(item.itemName + " removed from inventory.");
         }
     }
     public void ShowInventory()
     {
-        Debug.Log("Inventory: " + string.Join(", ", items));
+        foreach (var item in PlayerInventory)
+        {
+            Debug.Log($"Item: {item.itemName} /n");
+        }
+        //Debug.Log("Inventory: " + string.Join(", ", items));
+    }
+
+    public void GenerateShoppingList()
+    {
+        switch (playerData.currentStore)
+        {
+            case (Store.StoreType.Supermarket):
+
+                break;
+
+            case (Store.StoreType.Clothes):
+
+                break;
+
+            case (Store.StoreType.Hardware):
+
+                break;
+
+            case (Store.StoreType.None):
+
+                break;
+        }
     }
 }
 
