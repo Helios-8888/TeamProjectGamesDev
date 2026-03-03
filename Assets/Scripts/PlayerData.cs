@@ -7,10 +7,13 @@ public class PlayerData : MonoBehaviour
     public PlayerHealthbar PlayerHealthbar;
     public EntityHealth PlayerHealth;
     public List<string> inventory = new List<string>(); //Replace this with the item class when items are made
+    public int Pennies=0;
+    public int MaxPennies = 999;
 
     void Start()
     {
         PlayerHealth = GetComponent<EntityHealth>();
         PlayerHealthbar.SetMaxHealth(PlayerHealth.MaxHP);
+        Pennies = 0;
     }
 }
