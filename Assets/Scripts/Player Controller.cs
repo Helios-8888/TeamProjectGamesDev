@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
             if (Bullet != null)
             {
                 Bullet bulletInstance = Instantiate(Bullet, bulletspawn.position + CameraTransform.forward *2f, Quaternion.identity);
-                bulletInstance.ShootBullet(CameraTransform.forward);
+                bulletInstance.ShootBullet(CameraTransform.forward, PlayerData);
                 
             }
             else
@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
                     GameObject newTrolley = Instantiate(TrolleyPrefab, TrolleyAttachment.position, transform.rotation);
                     newTrolley.transform.parent = bulletspawn;
                     CurrentSpeed = TrolleySpeed;
+                    Destroy(currentTargetedInteractable.gameObject);
                 }
                 else
                 {
@@ -221,11 +222,10 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
             if (Physics.Raycast(bulletspawn.position, CameraTransform.forward, out hit, 5f))
             {
                 Debug.DrawRay(bulletspawn.position, CameraTransform.forward * 5f, Color.blue);
-                GameObject go = hit.collider.gameObject;
-                if (go.TryGetComponent<InteractableItem>(out InteractableItem item))
+                if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
                 {
-                    playerInventory.AddItem(item.itemName);
                     currentTargetedInteractable = item;
+                    playerInventory.AddItem(item.itemName);
                     Debug.Log(item.itemName);
                 }
                 
