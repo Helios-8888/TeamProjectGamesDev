@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 7578534351276125235}
   - component: {fileID: 1633533416602906030}
   - component: {fileID: -680727971259324341}
+  - component: {fileID: 9083777485234961585}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,12 +157,12 @@ MonoBehaviour:
   player: {fileID: 0}
   patrolPoints: []
   patrolSpeed: 0.5
-  chaseSpeed: 0.67
+  chaseSpeed: 0.32
   turnSpeed: 10
   arriveDistance: 0.6
   faceMovementDirection: 1
-  viewRadius: 10
-  viewAngle: 90
+  viewRadius: 50
+  viewAngle: 153
   eyeHeight: 1.6
   targetMask:
     serializedVersion: 2
@@ -184,5 +185,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114e9f9cb53e91340bf3554a8f8953bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 100
+  MaxHP: 175
   _HP: 0
+--- !u!114 &9083777485234961585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703061651230138752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf59a1fa167d0a4eb04a038f3e3e184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 2
+  damage: 30
+  cooldown: 1
