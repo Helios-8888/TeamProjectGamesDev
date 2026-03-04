@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114e9f9cb53e91340bf3554a8f8953bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 300
+  MaxHP: 175
   _HP: 0
 --- !u!114 &9083777485234961585
 MonoBehaviour:
@@ -200,5 +200,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 2
-  damage: 50
+  damage: 30
   cooldown: 1

@@ -520,6 +520,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -680727971259324341, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
+      propertyPath: MaxHP
+      value: 175
+      objectReference: {fileID: 0}
     - target: {fileID: 1703061651230138752, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: m_Name
       value: Enemy_Tank
@@ -563,6 +567,10 @@ PrefabInstance:
     - target: {fileID: 8975733411922348671, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083777485234961585, guid: b19f0109521e53f48ac5b6e1c3b89a52, type: 3}
+      propertyPath: damage
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2469,6 +2477,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -680727971259324341, guid: 45e2179b4356b884c8a0023496875314, type: 3}
+      propertyPath: MaxHP
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 1633533416602906030, guid: 45e2179b4356b884c8a0023496875314, type: 3}
       propertyPath: player
       value: 
