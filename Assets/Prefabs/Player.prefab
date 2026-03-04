@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7633836449442446383}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4148823360332340914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5019200964621465852}
+  m_Layer: 3
+  m_Name: TrolleyAttachment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5019200964621465852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148823360332340914}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7633836449442446383}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4614234641862447352
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,6 +79,7 @@ GameObject:
   - component: {fileID: 1379828919868295775}
   - component: {fileID: -7704126572698547057}
   - component: {fileID: 2623313364333341073}
+  - component: {fileID: 4867352418825649418}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -69,6 +101,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4176740023054013760}
+  - {fileID: 5019200964621465852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1881657133957671450
@@ -160,13 +193,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grounded: 0
-  MoveSpeed: 2
+  HasShoppingTrolley: 0
+  CurrentSpeed: 0
+  WalkSpeed: 1.5
+  TrolleySpeed: 1.5
   JumpForce: 5
-  GroundFriction: 6
+  WalkingFriction: 5
+  TrolleyFriction: 1
   AirFriction: 0
   CameraTransform: {fileID: 0}
   Bullet: {fileID: 2884430508887885312, guid: 3db6dafe22df009499d032027a011743, type: 3}
   bulletspawn: {fileID: 4176740023054013760}
+  TrolleyPrefab: {fileID: 7538100741218641985, guid: 008c19b27662cbe4d9b00c28fce7a77d, type: 3}
+  TrolleyAttachment: {fileID: 5019200964621465852}
+  PlayerData: {fileID: 2623313364333341073}
+  playerInventory: {fileID: 4867352418825649418}
+  currentTargetedInteractable: {fileID: 0}
 --- !u!54 &7700289240707861232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -256,7 +298,19 @@ MonoBehaviour:
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5990220068137203289}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e]'
   - m_PersistentCalls:
@@ -331,6 +385,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5990220068137203289}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnGrabItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e85451be-d01e-4705-a275-7143cca17c3f
+    m_ActionName: 'Player/GrabItem[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -365,3 +435,18 @@ MonoBehaviour:
   PlayerHealthbar: {fileID: 0}
   PlayerHealth: {fileID: -7704126572698547057}
   inventory: []
+  Pennies: 438
+  MaxPennies: 999
+--- !u!114 &4867352418825649418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614234641862447352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6958994d6b7864dbe0f5f341efb106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []

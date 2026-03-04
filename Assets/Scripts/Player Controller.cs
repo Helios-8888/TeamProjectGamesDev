@@ -1,3 +1,4 @@
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public Transform bulletspawn;
     public GameObject TrolleyPrefab;
     public Transform TrolleyAttachment;
+    public PlayerData PlayerData;
 
     [Header("Inventory Items")]
     public Inventory playerInventory;
@@ -64,9 +66,8 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         }
 
         //Adjust player rotation with look direction 
-        float angle = CameraTransform.rotation.eulerAngles.y;
-        Quaternion rotation = Quaternion.Euler(0, angle, 0);
-        transform.rotation = rotation;
+        float CameraYAngle = CameraTransform.rotation.eulerAngles.y;
+        transform.rotation = Quaternion.Euler(0, CameraYAngle, 0);
     }
 
     private void FixedUpdate()
@@ -125,23 +126,28 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     {
         if (context.started && currentTargetedInteractable != null)
         {
-            currentTargetedInteractable.Interact();
-            playerInventory.AddItem(currentTargetedInteractable.interactableName);
+            //Ray cast
+            //Check if the returned object has the InteractableItem class
+            // If so make it the nwe currentTargetedInteractable
+
             if (currentTargetedInteractable.itemName == "Shopping Trolley")
             {
-                HasShoppingTrolley = !HasShoppingTrolley; //Switc
-                if (HasShoppingTrolley)
+                if (PlayerData.Pennies >= 100)
                 {
+                    HasShoppingTrolley = true;
+                    PlayerData.Pennies -= 100;
+
                     GameObject newTrolley = Instantiate(TrolleyPrefab, TrolleyAttachment.position, transform.rotation);
                     newTrolley.transform.parent = bulletspawn;
                     CurrentSpeed = TrolleySpeed;
                 }
                 else
                 {
-                    CurrentSpeed = WalkSpeed;
+                    Debug.Log("Not enough pennies for the shopping trolley");
                 }
             }
-            
+
+            currentTargetedInteractable.Interact();
         }
     }
 
@@ -204,5 +210,27 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         {
             Grounded = false;
         }
+    }
+
+    public void OnGrabItem(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+
+            RaycastHit hit;
+            if (Physics.Raycast(bulletspawn.position, CameraTransform.forward, out hit, 5f))
+            {
+                Debug.DrawRay(bulletspawn.position, CameraTransform.forward * 5f, Color.blue);
+                GameObject go = hit.collider.gameObject;
+                if (go.TryGetComponent<InteractableItem>(out InteractableItem item))
+                {
+                    playerInventory.AddItem(item.itemName);
+                    currentTargetedInteractable = item;
+                    Debug.Log(item.itemName);
+                }
+                
+            }
+        }
+
     }
 }
