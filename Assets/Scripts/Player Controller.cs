@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public GameObject TrolleyPrefab;
     public Transform TrolleyAttachment;
 
+    [Header("Inventory Items")]
+    public Inventory playerInventory;
+    public InteractableItem currentTargetedInteractable;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         Cursor.visible = false;
         CurrentSpeed = WalkSpeed;
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -58,12 +64,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         }
 
         //Adjust player rotation with look direction 
-        Vector3 vectorBetween = transform.position - CameraTransform.position;
-        float angle = Mathf.Acos(Vector3.Dot(Vector3.forward, vectorBetween.normalized)) * Mathf.Rad2Deg;
-        if (vectorBetween.x < 0)
-        {
-            angle *= -1;
-        }
+        float angle = CameraTransform.rotation.eulerAngles.y;
         Quaternion rotation = Quaternion.Euler(0, angle, 0);
         transform.rotation = rotation;
     }
@@ -122,19 +123,25 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started && currentTargetedInteractable != null)
         {
-            HasShoppingTrolley = !HasShoppingTrolley; //Switc
-            if (HasShoppingTrolley)
+            currentTargetedInteractable.Interact();
+            playerInventory.AddItem(currentTargetedInteractable.interactableName);
+            if (currentTargetedInteractable.itemName == "Shopping Trolley")
             {
-                GameObject newTrolley = Instantiate(TrolleyPrefab, TrolleyAttachment.position, transform.rotation);
-                newTrolley.transform.parent = TrolleyAttachment;
-                CurrentSpeed = TrolleySpeed;
+                HasShoppingTrolley = !HasShoppingTrolley; //Switc
+                if (HasShoppingTrolley)
+                {
+                    GameObject newTrolley = Instantiate(TrolleyPrefab, TrolleyAttachment.position, transform.rotation);
+                    newTrolley.transform.parent = bulletspawn;
+                    CurrentSpeed = TrolleySpeed;
+                }
+                else
+                {
+                    CurrentSpeed = WalkSpeed;
+                }
             }
-            else
-            {
-                CurrentSpeed = WalkSpeed;
-            }
+            
         }
     }
 
