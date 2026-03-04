@@ -38,14 +38,8 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         }
 
         //Adjust player rotation with look direction
-        Vector3 vectorBetween = transform.position - CameraTransform.position;
-        float angle = Mathf.Acos(Vector3.Dot(Vector3.forward, vectorBetween.normalized)) * Mathf.Rad2Deg;
-        if (vectorBetween.x < 0)
-        {
-            angle *= -1;
-        }
-        Quaternion rotation = Quaternion.Euler(0, angle, 0);
-        transform.rotation = rotation;
+        float CameraYAngle = CameraTransform.rotation.eulerAngles.y;
+        transform.rotation = Quaternion.Euler(0, CameraYAngle, 0);
     }
 
     private void FixedUpdate()
