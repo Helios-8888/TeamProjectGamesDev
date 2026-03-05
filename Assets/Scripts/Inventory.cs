@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+<<<<<<< Updated upstream
 using UnityEditorInternal;
+=======
+>>>>>>> Stashed changes
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
+<<<<<<< Updated upstream
     public List<InteractableItem> PlayerInventory = new List<InteractableItem>();
     public List<InteractableItem> ShoppingList = new List<InteractableItem>();
     public int MaxShoppingItems = 3;
@@ -20,10 +24,26 @@ public class Inventory : MonoBehaviour
         {
             PlayerInventory.Remove(item);
             Debug.Log(item.itemName + " removed from inventory.");
+=======
+    public List<string> items = new List<string>();
+
+    public void AddItem(string itemName)
+    {
+        items.Add(itemName);
+        Debug.Log(itemName + "added to inventory.");
+    }
+    public void RemoveItem(string itemName)
+    {
+        if (items.Contains(itemName))
+        {
+            items.Remove(itemName);
+            Debug.Log(itemName + " removed from inventory.");
+>>>>>>> Stashed changes
         }
     }
     public void ShowInventory()
     {
+<<<<<<< Updated upstream
         foreach (var item in PlayerInventory)
         {
             Debug.Log($"Item: {item.itemName} /n");
@@ -59,6 +79,9 @@ public class Inventory : MonoBehaviour
 
         //        break;
         //}
+=======
+        Debug.Log("Inventory: " + string.Join(", ", items));
+>>>>>>> Stashed changes
     }
 }
 

@@ -17,6 +17,6 @@ public class startButtonScript : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData) // detects when the button is clicked
     {
-        SceneManager.LoadScene("Andrew"); // switches to Andrew scene
+        SceneManager.LoadScene("bakeryLevel"); // switches to demo level scene
     }
 }
