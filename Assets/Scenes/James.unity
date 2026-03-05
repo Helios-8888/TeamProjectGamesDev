@@ -2423,17 +2423,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4176740023054013760, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
   m_PrefabInstance: {fileID: 9058658389161352530}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9058658389161352532 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2623313364333341073, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-  m_PrefabInstance: {fileID: 9058658389161352530}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9058658389161352533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318e1074802c950479b5ec52bacba369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9058658389161352533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4614234641862447352, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
@@ -2451,9 +2440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6958994d6b7864dbe0f5f341efb106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 9058658389161352532}
   PlayerInventory: []
   ShoppingList: []
+  MaxShoppingItems: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

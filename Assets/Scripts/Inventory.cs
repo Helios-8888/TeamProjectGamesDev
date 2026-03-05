@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
-    public PlayerData playerData;
     public List<InteractableItem> PlayerInventory = new List<InteractableItem>();
     public List<InteractableItem> ShoppingList = new List<InteractableItem>();
-
+    public int MaxShoppingItems = 3;
     public void AddItem(InteractableItem item)
     {
         PlayerInventory.Add(item);
@@ -31,26 +31,34 @@ public class Inventory : MonoBehaviour
         //Debug.Log("Inventory: " + string.Join(", ", items));
     }
 
-    public void GenerateShoppingList()
+    public void GenerateShoppingList(Store store)
     {
-        switch (playerData.currentStore)
+        for (int i = 0; i < MaxShoppingItems; i++)
         {
-            case (Store.StoreType.Supermarket):
-
-                break;
-
-            case (Store.StoreType.Clothes):
-
-                break;
-
-            case (Store.StoreType.Hardware):
-
-                break;
-
-            case (Store.StoreType.None):
-
-                break;
+            ShoppingList.Add(store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)]);
         }
+            
+
+        //I have this swtich statement setup in case we want to do something specific with each type of store
+
+        //switch (store.storeType)
+        //{
+        //    case (Store.StoreType.Supermarket):
+
+        //        
+        //        break;
+        //    case (Store.StoreType.Clothes):
+
+        //        break;
+
+        //    case (Store.StoreType.Hardware):
+
+        //        break;
+
+        //    case (Store.StoreType.None):
+
+        //        break;
+        //}
     }
 }
 

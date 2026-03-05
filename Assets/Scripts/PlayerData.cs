@@ -8,7 +8,7 @@ public class PlayerData : MonoBehaviour
     public EntityHealth PlayerHealth;
     public Inventory PlayerInventory; //Replace this with the item class when items are made
     //Track what store the player's in
-    public Store.StoreType currentStore;
+    public Store currentStore;
     //Track the player inventory
 
 
@@ -17,6 +17,8 @@ public class PlayerData : MonoBehaviour
     {
         PlayerHealth = GetComponent<EntityHealth>();
         PlayerHealthbar.SetMaxHealth(PlayerHealth.MaxHP);
+        PlayerInventory = GetComponent<Inventory>();
+        PlayerInventory.GenerateShoppingList(currentStore);
     }
 
     private void OnCollisionEnter(Collision collision)
