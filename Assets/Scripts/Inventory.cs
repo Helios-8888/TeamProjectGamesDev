@@ -1,9 +1,5 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
-<<<<<<< Updated upstream
-using UnityEditorInternal;
-=======
->>>>>>> Stashed changes
 using UnityEngine;
 using UnityEngine.InputSystem;
 
