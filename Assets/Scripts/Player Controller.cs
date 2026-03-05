@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public PlayerData PlayerData;
 
     [Header("Inventory Items")]
-    public Inventory playerInventory;
     public InteractableItem currentTargetedInteractable;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -225,7 +224,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
                 if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
                 {
                     currentTargetedInteractable = item;
-                    playerInventory.AddItem(item.itemName);
+                    PlayerData.PlayerInventory.AddItem(item);
                     Debug.Log(item.itemName);
                 }
                 
