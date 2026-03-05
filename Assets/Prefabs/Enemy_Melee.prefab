@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 7578534351276125235}
   - component: {fileID: 1633533416602906030}
   - component: {fileID: -680727971259324341}
+  - component: {fileID: 3114971446842919543}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Untagged
+  m_Name: Enemy_Melee
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +161,7 @@ MonoBehaviour:
   turnSpeed: 10
   arriveDistance: 0.6
   faceMovementDirection: 1
-  viewRadius: 10
+  viewRadius: 50
   viewAngle: 90
   eyeHeight: 1.6
   targetMask:
@@ -186,3 +187,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 100
   _HP: 0
+--- !u!114 &3114971446842919543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703061651230138752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf59a1fa167d0a4eb04a038f3e3e184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 2
+  damage: 10
+  cooldown: 1

@@ -6,12 +6,11 @@ public class PlayerData : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public PlayerHealthbar PlayerHealthbar;
     public EntityHealth PlayerHealth;
-    public Inventory PlayerInventory; //Replace this with the item class when items are made
-    //Track what store the player's in
+    public List<string> inventory = new List<string>(); //Replace this with the item class when items are made
+    public Inventory PlayerInventory;
+    public int Pennies=0;
+    public int MaxPennies = 999;
     public Store currentStore;
-    //Track the player inventory
-
-
 
     void Start()
     {
@@ -19,6 +18,7 @@ public class PlayerData : MonoBehaviour
         PlayerHealthbar.SetMaxHealth(PlayerHealth.MaxHP);
         PlayerInventory = GetComponent<Inventory>();
         PlayerInventory.GenerateShoppingList(currentStore);
+        Pennies = 0;
     }
 
     private void OnCollisionEnter(Collision collision)

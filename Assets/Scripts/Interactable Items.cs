@@ -14,6 +14,6 @@ public class InteractableItem : MonoBehaviour, IInteractable
     {
         Debug.Log("Interacted with " + itemName);
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
