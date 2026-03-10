@@ -11,6 +11,10 @@ public class Inventory : MonoBehaviour
         PlayerInventory.Add(item);
         PlayerInventory.Sort();
         Debug.Log(item.itemName + "added to inventory.");
+        if (PlayerInventory == ShoppingList)
+        {
+            Debug.Log($"Player Collected all items on Shopping List");
+        }
     }
     public void RemoveItem(InteractableItem item)
     {

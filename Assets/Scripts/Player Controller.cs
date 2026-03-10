@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.started && currentTargetedInteractable != null)
+        if (context.started)
         {
             RaycastHit hit;
             if (Physics.Raycast(bulletspawn.position, CameraTransform.forward, out hit, 5f))
@@ -139,9 +139,9 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
                 if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
                 {
                     currentTargetedInteractable = item;
-                    if (PlayerData.Pennies > item.ItemCost)
+                    if (PlayerData.Pennies >= item.ItemCost)
                     {
-                        PlayerData.PlayerInventory.AddItem(item);
+                        PlayerData.PlayerInventory.AddItem(currentTargetedInteractable);
                         Debug.Log(item.itemName);
                         PlayerData.Pennies-=item.ItemCost;
                         if (item.itemName == "Shopping Trolley")
@@ -157,11 +157,11 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
                     {
                         Debug.Log($"Can't afford the current item: {item.itemName} ({PlayerData.Pennies} / {item.ItemCost})");
                     }
+                    item.Interact();
                 }
 
             }
             
-            currentTargetedInteractable.Interact();
         }
     }
 
