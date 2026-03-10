@@ -4,7 +4,13 @@ public class EntityHealth : MonoBehaviour
 {
     [SerializeField] public int MaxHP = 100;
     [SerializeField] protected int _HP;
-    
+    public enum Team
+    {
+        None,
+        Player,
+        Enemy
+    }
+    [SerializeField] public Team EntityTeam; //Player on Team 1. Enemies on Team 2
     public int HP
     {
         get {  return _HP; }

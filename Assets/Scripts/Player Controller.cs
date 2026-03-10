@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 {
+    [Header ("Entity Health")]
+    private EntityHealth _Health;
 
     [Header("Movement")]
     private Rigidbody _RB;
@@ -35,9 +37,14 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _RB = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        _RB = GetComponent<Rigidbody>();
+        _Health = GetComponent<EntityHealth>();
+        PlayerData = GetComponent<PlayerData>();
+        PlayerData.SetupPlayerData();
+
         CurrentSpeed = WalkSpeed;
     }
 
@@ -105,7 +112,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
             if (Bullet != null)
             {
                 Bullet bulletInstance = Instantiate(Bullet, bulletspawn.position + CameraTransform.forward *2f, Quaternion.identity);
-                bulletInstance.ShootBullet(CameraTransform.forward, PlayerData);
+                bulletInstance.ShootBullet(CameraTransform.forward, _Health);
                 
             }
             else
