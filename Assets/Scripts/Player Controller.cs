@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
                 if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
                 {
                     currentTargetedInteractable = item;
-                    PlayerData.PlayerInventory.AddItem(item);
+                    playerInventory.AddItem(item);
                     Debug.Log(item.itemName);
                 }
                 
