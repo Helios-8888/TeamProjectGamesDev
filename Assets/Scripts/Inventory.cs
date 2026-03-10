@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
@@ -11,6 +9,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(InteractableItem item)
     {
         PlayerInventory.Add(item);
+        PlayerInventory.Sort();
         Debug.Log(item.itemName + "added to inventory.");
     }
     public void RemoveItem(InteractableItem item)
@@ -27,7 +26,6 @@ public class Inventory : MonoBehaviour
         {
             Debug.Log($"Item: {item.itemName} /n");
         }
-        //Debug.Log("Inventory: " + string.Join(", ", items));
     }
 
     public void GenerateShoppingList(Store store)
@@ -36,28 +34,8 @@ public class Inventory : MonoBehaviour
         {
             ShoppingList.Add(store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)]);
         }
-            
+        ShoppingList.Sort();
 
-        //I have this swtich statement setup in case we want to do something specific with each type of store
-
-        //switch (store.storeType)
-        //{
-        //    case (Store.StoreType.Supermarket):
-
-        //        
-        //        break;
-        //    case (Store.StoreType.Clothes):
-
-        //        break;
-
-        //    case (Store.StoreType.Hardware):
-
-        //        break;
-
-        //    case (Store.StoreType.None):
-
-        //        break;
-        //}
     }
 }
 
