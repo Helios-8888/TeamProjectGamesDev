@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public PlayerData PlayerData;
 
     [Header("Inventory Items")]
-    public Inventory playerInventory;
     public InteractableItem currentTargetedInteractable;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
