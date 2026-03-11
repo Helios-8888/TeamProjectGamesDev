@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 68540de12a137c944a3a5ab8cff10805
+timeCreated: 1529027632
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/hamburgerbread.prefab
+  uploadId: 251993

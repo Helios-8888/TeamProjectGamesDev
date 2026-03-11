@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bc9a806dcd48bef4c92cc15ce7f2fe83
+timeCreated: 1529027623
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/jar.prefab
+  uploadId: 251993
