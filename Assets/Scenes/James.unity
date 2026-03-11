@@ -2956,10 +2956,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2623313364333341073, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: Pennies
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2623313364333341073, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: PlayerHealthbar
       value: 
       objectReference: {fileID: 54652999}

@@ -3,19 +3,34 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public ItemDictionary Items;
     public List<InteractableItem> PlayerInventory = new List<InteractableItem>();
     public List<InteractableItem> ShoppingList = new List<InteractableItem>();
+    public List<InteractableItem> RemainingShoppingList = new List<InteractableItem>();
     public int MaxShoppingItems = 3;
     public void AddItem(InteractableItem item)
     {
-        PlayerInventory.Add(item);
+        PlayerInventory.Add(Items.SearchForItem(item.itemName));
         PlayerInventory.Sort();
         Debug.Log(item.itemName + "added to inventory.");
-        if (PlayerInventory == ShoppingList)
+        UpdateShoppingList(item);
+
+    }
+
+    private void UpdateShoppingList(InteractableItem item)
+    {
+        InteractableItem tempItem = Items.SearchForItem(item.itemName);
+        if (RemainingShoppingList.Contains(tempItem))
         {
-            Debug.Log($"Player Collected all items on Shopping List");
+            RemainingShoppingList.Remove(tempItem);
+            Debug.Log($"Player collected {tempItem.itemName} on shopping list");
+            if (RemainingShoppingList.Count == 0)
+            {
+                Debug.Log($"Player collected all items on Shopping list.");
+            }
         }
     }
+
     public void RemoveItem(InteractableItem item)
     {
         if (PlayerInventory.Contains(item))
@@ -36,10 +51,13 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < MaxShoppingItems; i++)
         {
-            ShoppingList.Add(store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)]);
+            InteractableItem item = store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)];
+            ShoppingList.Add(item);
+            RemainingShoppingList.Add(Items.SearchForItem(item.itemName));
         }
-        ShoppingList.Sort();
 
+        ShoppingList.Sort();
+        RemainingShoppingList.Sort();
     }
 }
 

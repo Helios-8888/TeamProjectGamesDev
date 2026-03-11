@@ -17,6 +17,7 @@ public class PlayerData : MonoBehaviour
         PlayerHealth = GetComponent<EntityHealth>();
         PlayerHealthbar.SetMaxHealth(PlayerHealth.MaxHP);
         PlayerInventory = GetComponent<Inventory>();
+        PlayerInventory.Items.InitialiseDictionary();
         PlayerInventory.GenerateShoppingList(currentStore);
         Pennies = 0;
     }
