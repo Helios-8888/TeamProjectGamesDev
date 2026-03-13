@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 100
   _HP: 0
+  EntityTeam: 2
 --- !u!114 &3114971446842919543
 MonoBehaviour:
   m_ObjectHideFlags: 0
