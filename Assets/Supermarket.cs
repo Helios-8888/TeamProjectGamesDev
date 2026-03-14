@@ -173,7 +173,7 @@ public partial class @Supermarket: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""GrabItem"",
+                    ""name"": ""OpenShoppingList"",
                     ""type"": ""Button"",
                     ""id"": ""e85451be-d01e-4705-a275-7143cca17c3f"",
                     ""expectedControlType"": """",
@@ -571,11 +571,11 @@ public partial class @Supermarket: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8a464905-e199-460e-befc-1f6d6e43fd00"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""GrabItem"",
+                    ""action"": ""OpenShoppingList"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1172,7 +1172,7 @@ public partial class @Supermarket: IInputActionCollection2, IDisposable
         m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_GrabItem = m_Player.FindAction("GrabItem", throwIfNotFound: true);
+        m_Player_OpenShoppingList = m_Player.FindAction("OpenShoppingList", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1275,7 +1275,7 @@ public partial class @Supermarket: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Previous;
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_GrabItem;
+    private readonly InputAction m_Player_OpenShoppingList;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1324,9 +1324,9 @@ public partial class @Supermarket: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         /// <summary>
-        /// Provides access to the underlying input action "Player/GrabItem".
+        /// Provides access to the underlying input action "Player/OpenShoppingList".
         /// </summary>
-        public InputAction @GrabItem => m_Wrapper.m_Player_GrabItem;
+        public InputAction @OpenShoppingList => m_Wrapper.m_Player_OpenShoppingList;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1380,9 +1380,9 @@ public partial class @Supermarket: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @GrabItem.started += instance.OnGrabItem;
-            @GrabItem.performed += instance.OnGrabItem;
-            @GrabItem.canceled += instance.OnGrabItem;
+            @OpenShoppingList.started += instance.OnOpenShoppingList;
+            @OpenShoppingList.performed += instance.OnOpenShoppingList;
+            @OpenShoppingList.canceled += instance.OnOpenShoppingList;
         }
 
         /// <summary>
@@ -1421,9 +1421,9 @@ public partial class @Supermarket: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @GrabItem.started -= instance.OnGrabItem;
-            @GrabItem.performed -= instance.OnGrabItem;
-            @GrabItem.canceled -= instance.OnGrabItem;
+            @OpenShoppingList.started -= instance.OnOpenShoppingList;
+            @OpenShoppingList.performed -= instance.OnOpenShoppingList;
+            @OpenShoppingList.canceled -= instance.OnOpenShoppingList;
         }
 
         /// <summary>
@@ -1788,12 +1788,12 @@ public partial class @Supermarket: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSprint(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "GrabItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "OpenShoppingList" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnGrabItem(InputAction.CallbackContext context);
+        void OnOpenShoppingList(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

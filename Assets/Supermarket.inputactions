@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GrabItem",
+                    "name": "OpenShoppingList",
                     "type": "Button",
                     "id": "e85451be-d01e-4705-a275-7143cca17c3f",
                     "expectedControlType": "",
@@ -485,11 +485,11 @@
                 {
                     "name": "",
                     "id": "8a464905-e199-460e-befc-1f6d6e43fd00",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GrabItem",
+                    "action": "OpenShoppingList",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
