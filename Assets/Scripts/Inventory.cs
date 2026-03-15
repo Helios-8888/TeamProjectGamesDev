@@ -25,7 +25,21 @@ public class Inventory : MonoBehaviour
         if (_RemainingShoppingList.Contains(tempItem))
         {
             _RemainingShoppingList.Remove(tempItem);
+
+            _RemainingShoppingList.Sort();
+            for (int i = 0; i < ShoppingList.Count; i++)
+            {
+                if (i<_RemainingShoppingList.Count)
+                {
+                    ShoppingListText[i].text = _RemainingShoppingList[i].name;
+                }
+                else
+                {
+                    ShoppingListText[i].text = " ";
+                }
+            }
             Debug.Log($"Player collected {tempItem.itemName} on shopping list");
+
             if (_RemainingShoppingList.Count == 0)
             {
                 Debug.Log($"Player collected all items on Shopping list.");
@@ -56,11 +70,17 @@ public class Inventory : MonoBehaviour
             InteractableItem item = store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)];
             ShoppingList.Add(item);
             _RemainingShoppingList.Add(Items.SearchForItem(item.itemName));
-            ShoppingListText[i].text = item.name;
+            
         }
 
         ShoppingList.Sort();
-        _RemainingShoppingList.Sort();  
+        _RemainingShoppingList.Sort();
+
+        for (int i = 0; i < _RemainingShoppingList.Count; i++)
+        {
+            ShoppingListText[i].text = _RemainingShoppingList[i].name;
+        }
+
     }
 }
 
