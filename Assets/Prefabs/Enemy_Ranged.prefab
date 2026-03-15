@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1633533416602906030}
   - component: {fileID: -680727971259324341}
   - component: {fileID: 897847129652850474}
+  - component: {fileID: 5445307605500357940}
   m_Layer: 0
   m_Name: Enemy_Ranged
   m_TagString: Enemy
@@ -202,10 +203,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8344087501851917571}
-  Bullet: {fileID: 1216910080607301022, guid: 3db6dafe22df009499d032027a011743, type: 3}
+  bulletPrefab: {fileID: 0}
   fireCooldown: 1.2
   projectileSpeed: 12
   shootRange: 0
+  chaseRange: 20
+--- !u!195 &5445307605500357940
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703061651230138752}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5000001
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6178168321142403603
 GameObject:
   m_ObjectHideFlags: 0
