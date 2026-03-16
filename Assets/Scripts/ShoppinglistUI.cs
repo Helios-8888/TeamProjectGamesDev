@@ -6,19 +6,12 @@ public class ShoppingListUI : MonoBehaviour
 
     void Start()
     {
-        gameObject.SetActive(false); // start hidden
+        //gameObject.SetActive(false); // start hidden
     }
 
     public void Toggle()
     {
         isVisible = !isVisible;
         gameObject.SetActive(isVisible);
-    }
-    void Update()
-    {
-    if (Input.GetKeyDown(KeyCode.Tab))
-    {
-        Toggle();
-    }
     }
 }
