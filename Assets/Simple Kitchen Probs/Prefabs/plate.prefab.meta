@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 114ea6705f9d5b14f9f05ea9845ad946
+timeCreated: 1529027562
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/plate.prefab
+  uploadId: 251993

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2f2d34efa04a2f24eb1f513b1f1fd002
+timeCreated: 1529027674
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/counter.prefab
+  uploadId: 251993
