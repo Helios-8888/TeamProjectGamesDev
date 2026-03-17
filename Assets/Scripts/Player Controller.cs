@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,6 +35,9 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     [Header("Inventory Items")]
     public InteractableItem currentTargetedInteractable;
 
+    [Header("Animator controller")]
+    private Animator _anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         PlayerData.SetupPlayerData();
 
         CurrentSpeed = WalkSpeed;
+        _anim = GetComponent<Animator>();
     }
 
 
@@ -74,6 +79,11 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         //Adjust player rotation with look direction 
         float CameraYAngle = CameraTransform.rotation.eulerAngles.y;
         transform.rotation = Quaternion.Euler(0, CameraYAngle, 0);
+
+        //animation logic 
+        float speed = _RB.linearVelocity.magnitude;
+        _anim.SetFloat("Speed", speed);
+        _anim.SetBool("isGrounded", Grounded);
     }
 
     private void FixedUpdate()
@@ -180,6 +190,10 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
                 {
                     //Allow player to jump when not holding the shoppping trolley
                     _RB.AddForce(Vector3.up * JumpForce, ForceMode.VelocityChange);
+
+                    //animation trigger
+                    _anim.SetTrigger("Jump");
+                    _anim.SetBool("isGrounded", false);
 
                 }
 
