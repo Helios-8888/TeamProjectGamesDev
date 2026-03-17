@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: -7704126572698547057}
   - component: {fileID: 2623313364333341073}
   - component: {fileID: 4867352418825649418}
+  - component: {fileID: 6404447464542279441}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -454,7 +455,30 @@ MonoBehaviour:
   Items: {fileID: 11400000, guid: 5e382fdc0851aa2449ce60d2c6e81787, type: 2}
   PlayerInventory: []
   ShoppingList: []
+  RemainingShoppingList: []
   MaxShoppingItems: 3
+--- !u!95 &6404447464542279441
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614234641862447352}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b10fec9bba2b7eb4285c00cedd56af11, type: 3}
+  m_Controller: {fileID: 9100000, guid: b42940aef2afb8346bfc984741462a8a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2024308936923195699
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -102,7 +102,6 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     
     }
 
-
     public void OnMove(InputAction.CallbackContext context)
     {
         _InputDir = context.ReadValue<Vector2>();
