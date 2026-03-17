@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4aedeae35e0b245847d461c4cbc1f4, type: 3}
+  m_Name: Supermarket
+  m_EditorClassIdentifier: 
+  storeType: 1
+  ObtainableItems:
+  - {fileID: 7978174070079960123, guid: d021d0e894855d04aa7006058bfab661, type: 3}
+  - {fileID: 6375337822657036102, guid: 2590da66e6a9e9a4e8866562ee21ef0e, type: 3}
+  - {fileID: 4006014063106868340, guid: 0cb077427f8609a4d90e3bcb336f1f6f, type: 3}

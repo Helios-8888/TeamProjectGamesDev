@@ -4,14 +4,22 @@ public class EntityHealth : MonoBehaviour
 {
     [SerializeField] public int MaxHP = 100;
     [SerializeField] protected int _HP;
+    public enum Team
+    {
+        None,
+        Player,
+        Enemy
+    }
+    [SerializeField] public Team EntityTeam; //Player on Team 1. Enemies on Team 2
     public int HP
     {
         get {  return _HP; }
     }
-
+  
     private void Start()
     {
         _HP = MaxHP;
+        
     }
 
     public void DamageHP(int damage)
@@ -27,6 +35,7 @@ public class EntityHealth : MonoBehaviour
         if (IsDead())
         {
             Die();
+
         }
     }
 
@@ -46,11 +55,18 @@ public class EntityHealth : MonoBehaviour
 
     public bool IsDead()
     {
+        //return _HP <= 0;
+       
         return _HP <= 0;
     }
 
     public void Die()
     {
         Debug.Log($"{gameObject.name} died.");
+        if (_HP <= 0)
+        {
+
+            Destroy(this.gameObject);
+        }
     }
 }
