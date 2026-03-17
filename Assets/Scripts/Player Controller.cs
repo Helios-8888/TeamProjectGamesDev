@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     private Vector3 _ViewDir;
     public bool Grounded;
     public float MoveSpeed;
+    public float currentSpeed;
     public float JumpForce;
     public float GroundFriction = 5f;
     public float AirFriction = 0f;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         playerInventory = GetComponent<Inventory>();    
+        currentSpeed = MoveSpeed;
     }
 
     // Update is called once per frame
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     {
         Vector3 movementDirection = CameraTransform.forward * direction.y + CameraTransform.right * direction.x;
         movementDirection.y = 0;
-        _RB.AddForce(movementDirection * MoveSpeed, ForceMode.VelocityChange); //Do not directly modify velocity. Rb.Add Force is much better as long as you change the friction values (as I did above)
+        _RB.AddForce(movementDirection * currentSpeed, ForceMode.VelocityChange); //Do not directly modify velocity. Rb.Add Force is much better as long as you change the friction values (as I did above)
     
     }
 

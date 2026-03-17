@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 142357940}
   - component: {fileID: 142357939}
   - component: {fileID: 142357943}
+  - component: {fileID: 142357944}
   m_Layer: 0
   m_Name: Cabbage
   m_TagString: Untagged
@@ -345,6 +346,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableMessage: Item Aquired
   itemName: Cabbage
+--- !u!114 &142357944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142357938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55d830b439fe624d85d19a4e9847823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedIncrease: 2
+  pickupEffect: {fileID: 0}
 --- !u!1 &258199686
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +847,7 @@ GameObject:
   - component: {fileID: 526615366}
   - component: {fileID: 526615365}
   - component: {fileID: 526615369}
+  - component: {fileID: 526615370}
   m_Layer: 0
   m_Name: Bacon
   m_TagString: Untagged
@@ -942,6 +958,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableMessage: 'Item Aquired '
   itemName: Bacon
+--- !u!114 &526615370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526615364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131d3b5299269634ba9825fd7b074af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmount: 20
+  pickupEffect: {fileID: 0}
+  pickupHeal: {fileID: 0}
 --- !u!1 &564776936
 GameObject:
   m_ObjectHideFlags: 0
