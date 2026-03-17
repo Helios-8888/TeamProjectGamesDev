@@ -20,17 +20,18 @@ public class EntityHealth : MonoBehaviour
     public void DamageHP(int damage)
     {
         _HP -= damage;
-
+        //Check if it was the player
+        
         if (TryGetComponent<PlayerData>(out PlayerData data))
         {
             //Update the healthbar
             data.PlayerHealthbar.SetHealth(_HP);
-
         }
-        //Check if it was the player
-        if (_HP <= 0)
+        if (IsDead())
         {
             Die();
+            SceneManager.LoadScene("Death scene");
+
         }
     }
 
@@ -48,18 +49,20 @@ public class EntityHealth : MonoBehaviour
         }
     }
 
+    public bool IsDead()
+    {
+        //return _HP <= 0;
+       
+        return _HP <= 0;
+    }
 
     public void Die()
     {
         Debug.Log($"{gameObject.name} died.");
-        if (TryGetComponent<PlayerData>(out PlayerData player))
+        if (_HP <= 0)
         {
-            SceneManager.LoadScene("Death scene");
-        }
-        else
-        {
+
             Destroy(this.gameObject);
         }
-
     }
 }
