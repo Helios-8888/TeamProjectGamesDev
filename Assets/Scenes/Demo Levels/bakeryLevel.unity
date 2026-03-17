@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: table2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6b45d9e094ffc86469ee3d9003356651, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b45d9e094ffc86469ee3d9003356651, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -244,6 +248,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
       propertyPath: m_Name
       value: icecream
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
       propertyPath: m_LocalScale.x
@@ -1030,7 +1038,7 @@ GameObject:
   - component: {fileID: 164892411}
   - component: {fileID: 164892410}
   - component: {fileID: 164892409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oven (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,7 +1147,7 @@ GameObject:
   - component: {fileID: 246703636}
   - component: {fileID: 246703635}
   - component: {fileID: 246703634}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,6 +1255,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
       propertyPath: m_Name
       value: storagecontainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1369,7 +1381,7 @@ GameObject:
   - component: {fileID: 299739743}
   - component: {fileID: 299739742}
   - component: {fileID: 299739741}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ranged Enemy Barrier (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2413,6 +2425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: storagecontainer
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -2534,7 +2550,7 @@ GameObject:
   - component: {fileID: 572332868}
   - component: {fileID: 572332867}
   - component: {fileID: 572332866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oven (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2643,7 +2659,7 @@ GameObject:
   - component: {fileID: 575330698}
   - component: {fileID: 575330697}
   - component: {fileID: 575330696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oven (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2821,6 +2837,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
       propertyPath: m_Name
       value: storagecontainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
       propertyPath: m_LocalScale.x
@@ -3087,7 +3107,7 @@ GameObject:
   - component: {fileID: 715707757}
   - component: {fileID: 715707756}
   - component: {fileID: 715707755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bread Display (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3332,6 +3352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: counter
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a8ad98387fc352747a2860ae032aeb20, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a8ad98387fc352747a2860ae032aeb20, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -3476,7 +3500,7 @@ GameObject:
   - component: {fileID: 793249699}
   - component: {fileID: 793249698}
   - component: {fileID: 793249697}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3585,7 +3609,7 @@ GameObject:
   - component: {fileID: 807421388}
   - component: {fileID: 807421387}
   - component: {fileID: 807421386}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Counter (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4000,6 +4024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: table2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6b45d9e094ffc86469ee3d9003356651, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b45d9e094ffc86469ee3d9003356651, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -4365,6 +4393,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: storagecontainer
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4508,6 +4540,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
       propertyPath: m_Name
       value: storagecontainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e714f8871a5d08e488d10f3cec133a2a, type: 3}
       propertyPath: m_LocalScale.x
@@ -4662,6 +4698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: icecream
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -4802,7 +4842,7 @@ GameObject:
   - component: {fileID: 1117218384}
   - component: {fileID: 1117218383}
   - component: {fileID: 1117218382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kitchen Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4958,7 +4998,7 @@ GameObject:
   - component: {fileID: 1180589231}
   - component: {fileID: 1180589230}
   - component: {fileID: 1180589229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5067,7 +5107,7 @@ GameObject:
   - component: {fileID: 1270700352}
   - component: {fileID: 1270700351}
   - component: {fileID: 1270700350}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ranged Enemy Barrier (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5608,6 +5648,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
       propertyPath: m_Name
       value: icecream
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
       propertyPath: m_LocalScale.x
@@ -6415,6 +6459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: counter
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a8ad98387fc352747a2860ae032aeb20, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a8ad98387fc352747a2860ae032aeb20, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -6489,7 +6537,7 @@ GameObject:
   - component: {fileID: 1885844186}
   - component: {fileID: 1885844185}
   - component: {fileID: 1885844184}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bread Display (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6691,6 +6739,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
       propertyPath: m_Name
       value: icecream
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 538012c6e938e724f8d6a7adaf833fda, type: 3}
       propertyPath: m_LocalScale.x
@@ -6906,7 +6958,7 @@ GameObject:
   - component: {fileID: 2012890382}
   - component: {fileID: 2012890381}
   - component: {fileID: 2012890380}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bread Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
