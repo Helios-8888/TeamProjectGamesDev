@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -6,7 +7,8 @@ public class Inventory : MonoBehaviour
     public ItemDictionary Items;
     public List<InteractableItem> PlayerInventory = new List<InteractableItem>();
     public List<InteractableItem> ShoppingList = new List<InteractableItem>();
-    public List<InteractableItem> RemainingShoppingList = new List<InteractableItem>();
+    public List<TMP_Text> ShoppingListText = new List<TMP_Text>();  
+    private List<InteractableItem> _RemainingShoppingList = new List<InteractableItem>();
     public int MaxShoppingItems = 3;
     public void AddItem(InteractableItem item)
     {
@@ -20,11 +22,25 @@ public class Inventory : MonoBehaviour
     private void UpdateShoppingList(InteractableItem item)
     {
         InteractableItem tempItem = Items.SearchForItem(item.itemName);
-        if (RemainingShoppingList.Contains(tempItem))
+        if (_RemainingShoppingList.Contains(tempItem))
         {
-            RemainingShoppingList.Remove(tempItem);
+            _RemainingShoppingList.Remove(tempItem);
+
+            _RemainingShoppingList.Sort();
+            for (int i = 0; i < ShoppingList.Count; i++)
+            {
+                if (i<_RemainingShoppingList.Count)
+                {
+                    ShoppingListText[i].text = _RemainingShoppingList[i].name;
+                }
+                else
+                {
+                    ShoppingListText[i].text = " ";
+                }
+            }
             Debug.Log($"Player collected {tempItem.itemName} on shopping list");
-            if (RemainingShoppingList.Count == 0)
+
+            if (_RemainingShoppingList.Count == 0)
             {
                 Debug.Log($"Player collected all items on Shopping list.");
             }
@@ -53,11 +69,18 @@ public class Inventory : MonoBehaviour
         {
             InteractableItem item = store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)];
             ShoppingList.Add(item);
-            RemainingShoppingList.Add(Items.SearchForItem(item.itemName));
+            _RemainingShoppingList.Add(Items.SearchForItem(item.itemName));
+            
         }
 
         ShoppingList.Sort();
-        RemainingShoppingList.Sort();
+        _RemainingShoppingList.Sort();
+
+        for (int i = 0; i < _RemainingShoppingList.Count; i++)
+        {
+            ShoppingListText[i].text = _RemainingShoppingList[i].name;
+        }
+
     }
 }
 

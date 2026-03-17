@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public GameObject TrolleyPrefab;
     public Transform TrolleyAttachment;
     public PlayerData PlayerData;
+    public ShoppingListUI ShoppingListUI;
 
     [Header("Inventory Items")]
     public InteractableItem currentTargetedInteractable;
@@ -39,6 +41,11 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     private Animator _anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -239,9 +246,12 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         }
     }
 
-    public void OnGrabItem(InputAction.CallbackContext context)
+    public void OnOpenShoppingList(InputAction.CallbackContext context)
     {
-        
-
+        if (context.started)
+        {
+            Debug.Log("Shopping list toggled"); 
+            ShoppingListUI.Toggle();
+        }
     }
 }
