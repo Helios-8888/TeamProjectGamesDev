@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 75
   _HP: 0
+  EntityTeam: 0
 --- !u!114 &6953721476452118660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6598691860018426479}
-  Bullet: {fileID: 1216910080607301022, guid: 3db6dafe22df009499d032027a011743, type: 3}
+  Bullet: {fileID: 2884430508887885312, guid: 3db6dafe22df009499d032027a011743, type: 3}
   fireCooldown: 1.2
   projectileSpeed: 12
   shootRange: 0

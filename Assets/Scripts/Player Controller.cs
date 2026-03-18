@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public InteractableItem currentTargetedInteractable;
 
     [Header("Animator controller")]
-    private Animator _anim;
+    public Animator _anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -65,39 +66,46 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     // Update is called once per frame
     void Update()
     {
-        if (Grounded)
+        if (_Health.HP>0)
         {
-            //When grounded apply friction to the player
-            if (HasShoppingTrolley)
+            if (Grounded)
             {
-                _RB.linearDamping = TrolleyFriction; //Less friction when shopping Trolley Equipped
+                //When grounded apply friction to the player
+                if (HasShoppingTrolley)
+                {
+                    _RB.linearDamping = TrolleyFriction; //Less friction when shopping Trolley Equipped
+                }
+                else
+
+                {
+                    _RB.linearDamping = WalkingFriction; //More Friction when walking normally
+                }
             }
             else
-
             {
-                _RB.linearDamping = WalkingFriction; //More Friction when walking normally
+                _RB.linearDamping = AirFriction; //Player is frictionless when airborne
             }
-        }
-        else
-        {
-            _RB.linearDamping = AirFriction; //Player is frictionless when airborne
-        }
 
-        //Adjust player rotation with look direction 
-        float CameraYAngle = CameraTransform.rotation.eulerAngles.y;
-        transform.rotation = Quaternion.Euler(0, CameraYAngle, 0);
+            //Adjust player rotation with look direction 
+            float CameraYAngle = CameraTransform.rotation.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0, CameraYAngle, 0);
 
-        //animation logic 
-        float speed = _RB.linearVelocity.magnitude;
-        _anim.SetFloat("Speed", speed);
-        _anim.SetBool("isGrounded", Grounded);
+            //animation logic 
+            float speed = _RB.linearVelocity.magnitude;
+            _anim.SetFloat("Speed", speed);
+            _anim.SetBool("isGrounded", Grounded);
+            
+        }
     }
 
     private void FixedUpdate()
     {
-        if (Grounded)
+        if (_Health.HP > 0)
         {
-            MovePlayer(_InputDir);
+            if (Grounded)
+            {
+                MovePlayer(_InputDir);
+            }
         }
     }
 
@@ -123,9 +131,9 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public void OnAttack(InputAction.CallbackContext context)
     {
         //Just for testing
-        if (context.performed)
+        if (context.performed && _Health.HP > 0)
         {
-            if (Bullet != null)
+            if (Bullet != null )
             {
                 Bullet bulletInstance = Instantiate(Bullet, bulletspawn.position + CameraTransform.forward *2f, Quaternion.identity);
                 bulletInstance.ShootBullet(CameraTransform.forward, _Health);
@@ -148,34 +156,41 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     {
         if (context.started)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(bulletspawn.position, CameraTransform.forward, out hit, 5f))
+            if (_Health.HP > 0)
             {
-                Debug.DrawRay(bulletspawn.position, CameraTransform.forward * 5f, Color.blue);
-                if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
+                RaycastHit hit;
+                if (Physics.Raycast(bulletspawn.position, CameraTransform.forward, out hit, 5f))
                 {
-                    currentTargetedInteractable = item;
-                    if (PlayerData.Pennies >= item.ItemCost)
+                    Debug.DrawRay(bulletspawn.position, CameraTransform.forward * 5f, Color.blue);
+                    if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
                     {
-                        PlayerData.PlayerInventory.AddItem(currentTargetedInteractable);
-                        Debug.Log(item.itemName);
-                        PlayerData.Pennies-=item.ItemCost;
-                        if (item.itemName == "Shopping Trolley")
+                        currentTargetedInteractable = item;
+                        if (PlayerData.Pennies >= item.ItemCost)
                         {
+                            PlayerData.PlayerInventory.AddItem(currentTargetedInteractable);
+                            Debug.Log(item.itemName);
+                            PlayerData.Pennies -= item.ItemCost;
+                            if (item.itemName == "Shopping Trolley")
+                            {
                                 HasShoppingTrolley = true;
                                 GameObject newTrolley = Instantiate(TrolleyPrefab, TrolleyAttachment.position, transform.rotation);
                                 newTrolley.transform.parent = bulletspawn;
                                 CurrentSpeed = TrolleySpeed;
+                            }
+                            Destroy(item.gameObject);
                         }
-                        Destroy(item.gameObject);
+                        else
+                        {
+                            Debug.Log($"Can't afford the current item: {item.itemName} ({PlayerData.Pennies} / {item.ItemCost})");
+                        }
+                        item.Interact();
                     }
-                    else
-                    {
-                        Debug.Log($"Can't afford the current item: {item.itemName} ({PlayerData.Pennies} / {item.ItemCost})");
-                    }
-                    item.Interact();
-                }
 
+                }
+            }
+            else
+            {
+                SceneManager.LoadScene("Main"); //Change to the main menu scene
             }
             
         }
@@ -183,7 +198,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _Health.HP >0)
         {
             Debug.Log("Jump Pressed");
             if (Grounded)
@@ -248,7 +263,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnOpenShoppingList(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && _Health.HP > 0)
         {
             Debug.Log("Shopping list toggled"); 
             ShoppingListUI.Toggle();

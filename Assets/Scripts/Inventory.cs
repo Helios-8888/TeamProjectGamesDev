@@ -65,6 +65,8 @@ public class Inventory : MonoBehaviour
 
     public void GenerateShoppingList(Store store)
     {
+        ShoppingList.Clear();
+        _RemainingShoppingList.Clear();
         for (int i = 0; i < MaxShoppingItems; i++)
         {
             InteractableItem item = store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)];
