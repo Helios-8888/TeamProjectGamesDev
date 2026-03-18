@@ -12883,14 +12883,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379828919868295775, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2623313364333341073, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: PlayerHealthbar
       value: 
@@ -12898,10 +12890,6 @@ PrefabInstance:
     - target: {fileID: 4614234641862447352, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867352418825649418, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
-      propertyPath: ShoppingListText.Array.size
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4867352418825649418, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: 'ShoppingListText.Array.data[0]'
