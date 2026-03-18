@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 100
   _HP: 0
+  EntityTeam: 0
 --- !u!114 &5658042056487963482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +212,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4408563832470164225}
     m_Modifications:
+    - target: {fileID: 1984392173307818723, guid: b9d098f94cae96344a617f6155796611, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 0babe6c02a48c1840947d0c6d714e111, type: 3}
     - target: {fileID: 7481082220541915819, guid: b9d098f94cae96344a617f6155796611, type: 3}
       propertyPath: m_Name
       value: Chef04

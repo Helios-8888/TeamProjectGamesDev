@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 175
   _HP: 0
+  EntityTeam: 0
 --- !u!114 &6418958644193097961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +212,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4872536508574078852}
     m_Modifications:
+    - target: {fileID: -1363831305260285880, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 0babe6c02a48c1840947d0c6d714e111, type: 3}
     - target: {fileID: 5089008814553044292, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
