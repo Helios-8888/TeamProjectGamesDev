@@ -1,9 +1,13 @@
+using Unity.VisualScripting;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 {
+    [Header ("Entity Health")]
+    private EntityHealth _Health;
 
     [Header("Movement")]
     private Rigidbody _RB;
@@ -28,17 +32,32 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public GameObject TrolleyPrefab;
     public Transform TrolleyAttachment;
     public PlayerData PlayerData;
+    public ShoppingListUI ShoppingListUI;
 
     [Header("Inventory Items")]
     public InteractableItem currentTargetedInteractable;
 
+    [Header("Animator controller")]
+    private Animator _anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     void Start()
     {
-        _RB = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        _RB = GetComponent<Rigidbody>();
+        _Health = GetComponent<EntityHealth>();
+        PlayerData = GetComponent<PlayerData>();
+        PlayerData.SetupPlayerData();
+
         CurrentSpeed = WalkSpeed;
+        _anim = GetComponent<Animator>();
     }
 
 
@@ -67,6 +86,11 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         //Adjust player rotation with look direction 
         float CameraYAngle = CameraTransform.rotation.eulerAngles.y;
         transform.rotation = Quaternion.Euler(0, CameraYAngle, 0);
+
+        //animation logic 
+        float speed = _RB.linearVelocity.magnitude;
+        _anim.SetFloat("Speed", speed);
+        _anim.SetBool("isGrounded", Grounded);
     }
 
     private void FixedUpdate()
@@ -84,7 +108,6 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         _RB.AddForce(movementDirection * CurrentSpeed, ForceMode.VelocityChange); //Do not directly modify velocity. Rb.Add Force is much better as long as you change the friction values (as I did above)
     
     }
-
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -105,7 +128,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
             if (Bullet != null)
             {
                 Bullet bulletInstance = Instantiate(Bullet, bulletspawn.position + CameraTransform.forward *2f, Quaternion.identity);
-                bulletInstance.ShootBullet(CameraTransform.forward, PlayerData);
+                bulletInstance.ShootBullet(CameraTransform.forward, _Health);
                 
             }
             else
@@ -123,31 +146,38 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.started && currentTargetedInteractable != null)
+        if (context.started)
         {
-            //Ray cast
-            //Check if the returned object has the InteractableItem class
-            // If so make it the nwe currentTargetedInteractable
-
-            if (currentTargetedInteractable.itemName == "Shopping Trolley")
+            RaycastHit hit;
+            if (Physics.Raycast(bulletspawn.position, CameraTransform.forward, out hit, 5f))
             {
-                if (PlayerData.Pennies >= 100)
+                Debug.DrawRay(bulletspawn.position, CameraTransform.forward * 5f, Color.blue);
+                if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
                 {
-                    HasShoppingTrolley = true;
-                    PlayerData.Pennies -= 100;
+                    currentTargetedInteractable = item;
+                    if (PlayerData.Pennies >= item.ItemCost)
+                    {
+                        PlayerData.PlayerInventory.AddItem(currentTargetedInteractable);
+                        Debug.Log(item.itemName);
+                        PlayerData.Pennies-=item.ItemCost;
+                        if (item.itemName == "Shopping Trolley")
+                        {
+                                HasShoppingTrolley = true;
+                                GameObject newTrolley = Instantiate(TrolleyPrefab, TrolleyAttachment.position, transform.rotation);
+                                newTrolley.transform.parent = bulletspawn;
+                                CurrentSpeed = TrolleySpeed;
+                        }
+                        Destroy(item.gameObject);
+                    }
+                    else
+                    {
+                        Debug.Log($"Can't afford the current item: {item.itemName} ({PlayerData.Pennies} / {item.ItemCost})");
+                    }
+                    item.Interact();
+                }
 
-                    GameObject newTrolley = Instantiate(TrolleyPrefab, TrolleyAttachment.position, transform.rotation);
-                    newTrolley.transform.parent = bulletspawn;
-                    CurrentSpeed = TrolleySpeed;
-                    Destroy(currentTargetedInteractable.gameObject);
-                }
-                else
-                {
-                    Debug.Log("Not enough pennies for the shopping trolley");
-                }
             }
-
-            currentTargetedInteractable.Interact();
+            
         }
     }
 
@@ -166,6 +196,10 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
                 {
                     //Allow player to jump when not holding the shoppping trolley
                     _RB.AddForce(Vector3.up * JumpForce, ForceMode.VelocityChange);
+
+                    //animation trigger
+                    _anim.SetTrigger("Jump");
+                    _anim.SetBool("isGrounded", false);
 
                 }
 
@@ -212,24 +246,12 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
         }
     }
 
-    public void OnGrabItem(InputAction.CallbackContext context)
+    public void OnOpenShoppingList(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-
-            RaycastHit hit;
-            if (Physics.Raycast(bulletspawn.position, CameraTransform.forward, out hit, 5f))
-            {
-                Debug.DrawRay(bulletspawn.position, CameraTransform.forward * 5f, Color.blue);
-                if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
-                {
-                    currentTargetedInteractable = item;
-                    PlayerData.PlayerInventory.AddItem(item);
-                    Debug.Log(item.itemName);
-                }
-                
-            }
+            Debug.Log("Shopping list toggled"); 
+            ShoppingListUI.Toggle();
         }
-
     }
 }

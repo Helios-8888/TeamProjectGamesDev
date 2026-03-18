@@ -1,18 +1,52 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
+    public ItemDictionary Items;
     public List<InteractableItem> PlayerInventory = new List<InteractableItem>();
     public List<InteractableItem> ShoppingList = new List<InteractableItem>();
+    public List<TMP_Text> ShoppingListText = new List<TMP_Text>();  
+    private List<InteractableItem> _RemainingShoppingList = new List<InteractableItem>();
     public int MaxShoppingItems = 3;
     public void AddItem(InteractableItem item)
     {
-        PlayerInventory.Add(item);
+        PlayerInventory.Add(Items.SearchForItem(item.itemName));
+        PlayerInventory.Sort();
         Debug.Log(item.itemName + "added to inventory.");
+        UpdateShoppingList(item);
+
     }
+
+    private void UpdateShoppingList(InteractableItem item)
+    {
+        InteractableItem tempItem = Items.SearchForItem(item.itemName);
+        if (_RemainingShoppingList.Contains(tempItem))
+        {
+            _RemainingShoppingList.Remove(tempItem);
+
+            _RemainingShoppingList.Sort();
+            for (int i = 0; i < ShoppingList.Count; i++)
+            {
+                if (i<_RemainingShoppingList.Count)
+                {
+                    ShoppingListText[i].text = _RemainingShoppingList[i].name;
+                }
+                else
+                {
+                    ShoppingListText[i].text = " ";
+                }
+            }
+            Debug.Log($"Player collected {tempItem.itemName} on shopping list");
+
+            if (_RemainingShoppingList.Count == 0)
+            {
+                Debug.Log($"Player collected all items on Shopping list.");
+            }
+        }
+    }
+
     public void RemoveItem(InteractableItem item)
     {
         if (PlayerInventory.Contains(item))
@@ -27,37 +61,26 @@ public class Inventory : MonoBehaviour
         {
             Debug.Log($"Item: {item.itemName} /n");
         }
-        //Debug.Log("Inventory: " + string.Join(", ", items));
     }
 
     public void GenerateShoppingList(Store store)
     {
         for (int i = 0; i < MaxShoppingItems; i++)
         {
-            ShoppingList.Add(store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)]);
-        }
+            InteractableItem item = store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)];
+            ShoppingList.Add(item);
+            _RemainingShoppingList.Add(Items.SearchForItem(item.itemName));
             
+        }
 
-        //I have this swtich statement setup in case we want to do something specific with each type of store
+        ShoppingList.Sort();
+        _RemainingShoppingList.Sort();
 
-        //switch (store.storeType)
-        //{
-        //    case (Store.StoreType.Supermarket):
+        for (int i = 0; i < _RemainingShoppingList.Count; i++)
+        {
+            ShoppingListText[i].text = _RemainingShoppingList[i].name;
+        }
 
-        //        
-        //        break;
-        //    case (Store.StoreType.Clothes):
-
-        //        break;
-
-        //    case (Store.StoreType.Hardware):
-
-        //        break;
-
-        //    case (Store.StoreType.None):
-
-        //        break;
-        //}
     }
 }
 
