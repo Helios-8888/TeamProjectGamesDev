@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntityHealth : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class EntityHealth : MonoBehaviour
         if (IsDead())
         {
             Die();
+            SceneManager.LoadScene("Death scene");
 
         }
     }

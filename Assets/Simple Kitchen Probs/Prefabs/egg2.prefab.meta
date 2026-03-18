@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 09c25496a284891428fb961bb66445ed
+timeCreated: 1529027646
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/egg2.prefab
+  uploadId: 251993

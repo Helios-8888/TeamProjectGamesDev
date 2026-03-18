@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 372414994cbfc294d9157c63fed60f1b
+timeCreated: 1529027634
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/foodprocessor.prefab
+  uploadId: 251993

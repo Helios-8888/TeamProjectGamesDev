@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e278b6a3450b6eb4f947aa4227540137
+timeCreated: 1529027551
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/wall.prefab
+  uploadId: 251993

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f88f3c8080bc0704cac6aa4c7ab03771
+timeCreated: 1529027626
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/icecream.prefab
+  uploadId: 251993

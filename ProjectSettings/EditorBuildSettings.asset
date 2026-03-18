@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo Levels/bakeryLevel.unity
     guid: 5fd6fcb2a68fbbd48845f10b5b93154d
+  - enabled: 1
+    path: Assets/Scenes/Jack.unity
+    guid: 6a66ed17e9db91743bebcde3d029072d
+  - enabled: 1
+    path: Assets/Scenes/Death scene.unity
+    guid: a1d63b2ea20f10e4cbd6236746ca8fe5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
