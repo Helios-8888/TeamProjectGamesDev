@@ -2,30 +2,29 @@ using UnityEngine;
 
 public class PowerUpHeal : MonoBehaviour
 {
-    public float healAmount = 20f;
+    public int healAmount = 20;
 
-    public GameObject pickupEffect;
+    public GameObject pickupEffect; //Attach some sort of vfx to this
 
-    public GameObject pickupHeal;
+    //public GameObject pickupHeal; unused variable
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if(other.TryGetComponent<PlayerHealthbar>(out PlayerHealthbar playerHealth))
+            if(other.TryGetComponent<EntityHealth>(out EntityHealth playerHealth))
             {
-                Pickup(other);
+                Pickup(playerHealth);
             }
         }
 
-        void Pickup(Collider player)
-        {
-            Instantiate(pickupEffect, transform.position, transform.rotation);
+    }
 
-            PlayerData data = player.GetComponent<PlayerData>();
-            data.PlayerHealth.HealHP(Mathf.RoundToInt(healAmount));
+    void Pickup(EntityHealth player)
+    {
+        Instantiate(pickupEffect, transform.position, transform.rotation);
+        player.HealHP(healAmount);
 
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
