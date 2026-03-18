@@ -12,7 +12,7 @@ public class PoweUpDamage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(other.TryGetComponent<DamageHP>(out PlayerAttack playerAttack))
+            if(other.TryGetComponent<EntityHealth>(out EntityHealth playerAttack))
             {
                 Pickup(other);
             }
@@ -23,7 +23,7 @@ public class PoweUpDamage : MonoBehaviour
             Instantiate(pickupEffect, transform.position, transform.rotation);
 
             PlayerData data = player.GetComponent<PlayerData>();
-            data.PlayerAttack.DamageHP(Mathf.RoundToInt(DamageIncrease));
+            data.PlayerHealth.DamageHP(Mathf.RoundToInt(DamageIncrease));
 
             Destroy(gameObject);
         }
