@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class Inventory : MonoBehaviour
 
             if (_RemainingShoppingList.Count == 0)
             {
-                Debug.Log($"Player collected all items on Shopping list.");
+               
             }
         }
     }
@@ -83,6 +84,23 @@ public class Inventory : MonoBehaviour
             ShoppingListText[i].text = _RemainingShoppingList[i].name;
         }
 
+    }
+
+    public void CompleteShoppingList()
+    {
+        Debug.Log($"Player collected all items on Shopping list.");
+        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCount-1)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCount - 2)
+            {
+                SceneManager.LoadScene("Main");
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+
+        }
     }
 }
 

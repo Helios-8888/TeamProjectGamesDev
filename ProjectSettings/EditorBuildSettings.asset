@@ -6,26 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/Leo.unity
-    guid: 3d8c05c9ecf28cb4ab85fa596a66c1f6
-  - enabled: 1
-    path: Assets/Scenes/Andrew.unity
-    guid: cea3650142ca738469201c751b7d145d
+    path: Assets/Scenes/Main.unity
+    guid: 6a09dbf63230822469788a65a28aa32f
   - enabled: 1
     path: Assets/Scenes/Demo Levels/bakeryLevel.unity
     guid: 5fd6fcb2a68fbbd48845f10b5b93154d
   - enabled: 1
-    path: Assets/Scenes/Jack.unity
-    guid: 6a66ed17e9db91743bebcde3d029072d
+    path: Assets/Scenes/Demo Levels/butcherLevel.unity
+    guid: aa9a716b144306c4e8ed604f4a2ae983
+  - enabled: 1
+    path: Assets/Scenes/Demo Levels/supermarketLevel.unity
+    guid: 1979b9e1237412441a358807813f7b22
   - enabled: 1
     path: Assets/Scenes/Death scene.unity
     guid: a1d63b2ea20f10e4cbd6236746ca8fe5
-  - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 6a09dbf63230822469788a65a28aa32f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
