@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
+public class PlayerController : Singleton, Supermarket.IPlayerActions
 {
+
     [Header ("Entity Health")]
     private EntityHealth _Health;
 
@@ -43,10 +44,6 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

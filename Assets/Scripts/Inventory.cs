@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Inventory : MonoBehaviour
 {
     public ItemDictionary Items;
+    public Transform[] ItemSpawnPositions = new Transform[3];
     public List<InteractableItem> PlayerInventory = new List<InteractableItem>();
     public List<InteractableItem> ShoppingList = new List<InteractableItem>();
     public List<TMP_Text> ShoppingListText = new List<TMP_Text>();  
@@ -43,7 +44,7 @@ public class Inventory : MonoBehaviour
 
             if (_RemainingShoppingList.Count == 0)
             {
-               
+                CompleteShoppingList();
             }
         }
     }
@@ -73,6 +74,7 @@ public class Inventory : MonoBehaviour
             InteractableItem item = store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)];
             ShoppingList.Add(item);
             _RemainingShoppingList.Add(Items.SearchForItem(item.itemName));
+            Instantiate(item, ItemSpawnPositions[i]);
             
         }
 
@@ -89,16 +91,13 @@ public class Inventory : MonoBehaviour
     public void CompleteShoppingList()
     {
         Debug.Log($"Player collected all items on Shopping list.");
-        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCount-1)
+        Scene currentScene = SceneManager.GetActiveScene();
+        Debug.Log($"Current Scene: {currentScene.name}, Index: {currentScene.buildIndex}");
+        if (currentScene.buildIndex < SceneManager.sceneCount)
         {
-            if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCount - 2)
-            {
-                SceneManager.LoadScene("Main");
-            }
-            else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
 
         }
     }

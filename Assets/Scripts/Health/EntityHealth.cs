@@ -59,6 +59,8 @@ public class EntityHealth : MonoBehaviour
         if (EntityTeam == Team.Player)
         {
             //Set the player to dead.
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             SceneManager.LoadScene("Death scene");
             //Disable movement
             //Change the camera
