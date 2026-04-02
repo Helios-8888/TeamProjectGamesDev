@@ -40,12 +40,12 @@ public class EnemyAIController : MonoBehaviour
 
     private Animator animator; 
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        animator = GetComponent<Animator>(); 
+        animator = GetComponentInChildren<Animator>(); 
 
         if (!player)
         {

@@ -9,7 +9,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     Transform Player;
     float nextTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         var playerObj = GameObject.FindWithTag("Player");
         if (playerObj) Player = playerObj.transform;
@@ -18,17 +18,19 @@ public class EnemyMeleeAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Player) return;
-
-        float d = Vector3.Distance(transform.position, Player.position);
-        if (d > attackRange) return;
-
-        if (Time.time > nextTime)
+        if (Player)
         {
-            nextTime = Time.time + cooldown;
+            float distanceFromPlayer = Vector3.Distance(transform.position, Player.position);
+            if (distanceFromPlayer <= attackRange)
+            {
+                if (Time.time > nextTime)
+                {
+                    nextTime = Time.time + cooldown;
 
-            var hp = Player.GetComponent<EntityHealth>();
-            if (hp) hp.DamageHP((int)damage);
+                    var hp = Player.GetComponent<EntityHealth>();
+                    if (hp) hp.DamageHP((int)damage);
+                }
+            }
         }
     }
 }
