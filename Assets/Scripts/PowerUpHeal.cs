@@ -1,12 +1,14 @@
+using System;
 using UnityEngine;
 
 public class PowerUpHeal : MonoBehaviour
 {
-    public float healAmount = 20f;
+    public int healAmount = (int)20f;
 
     public GameObject pickupEffect;
 
     public GameObject pickupHeal;
+    private PlayerHealthbar MaxHP;
 
     void OnTriggerEnter(Collider other)
     {
@@ -27,5 +29,12 @@ public class PowerUpHeal : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        // Fixed: compare the instance field `MaxHP` (not the type) and remove the stray semicolon.
+        // If MaxHP is null, mark this pickup to persist across scene loads.
+        if (MaxHP != null)
+        {
+            UnityEngine.Object.DontDestroyOnLoad(gameObject);
+        }   
     }
 }
