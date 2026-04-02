@@ -1,9 +1,8 @@
-using Unity.VisualScripting;
-using Unity.VisualScripting.ReorderableList;
+
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 {
@@ -34,6 +33,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public Transform TrolleyAttachment;
     public PlayerData PlayerData;
     public ShoppingListUI ShoppingListUI;
+    public TMP_Text VictoryText;
 
     [Header("Inventory Items")]
     public InteractableItem currentTargetedInteractable;
