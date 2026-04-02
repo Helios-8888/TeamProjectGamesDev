@@ -197,7 +197,7 @@ MonoBehaviour:
   Grounded: 0
   HasShoppingTrolley: 0
   CurrentSpeed: 0
-  WalkSpeed: 2
+  WalkSpeed: 1
   TrolleySpeed: 2
   JumpForce: 5
   WalkingFriction: 5
@@ -209,7 +209,9 @@ MonoBehaviour:
   TrolleyPrefab: {fileID: 7538100741218641985, guid: 008c19b27662cbe4d9b00c28fce7a77d, type: 3}
   TrolleyAttachment: {fileID: 5019200964621465852}
   PlayerData: {fileID: 2623313364333341073}
+  ShoppingListUI: {fileID: 0}
   currentTargetedInteractable: {fileID: 0}
+  _anim: {fileID: 0}
 --- !u!54 &7700289240707861232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -390,7 +392,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5990220068137203289}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnGrabItem
+        m_MethodName: OnOpenShoppingList
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -455,7 +457,10 @@ MonoBehaviour:
   Items: {fileID: 11400000, guid: 5e382fdc0851aa2449ce60d2c6e81787, type: 2}
   PlayerInventory: []
   ShoppingList: []
-  RemainingShoppingList: []
+  ShoppingListText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   MaxShoppingItems: 3
 --- !u!95 &6404447464542279441
 Animator:

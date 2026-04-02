@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntityHealth : MonoBehaviour
 {
@@ -26,16 +27,14 @@ public class EntityHealth : MonoBehaviour
     {
         _HP -= damage;
         //Check if it was the player
-        
         if (TryGetComponent<PlayerData>(out PlayerData data))
         {
             //Update the healthbar
             data.PlayerHealthbar.SetHealth(_HP);
         }
-        if (IsDead())
+        if (_HP <= 0)
         {
             Die();
-
         }
     }
 
@@ -53,20 +52,21 @@ public class EntityHealth : MonoBehaviour
         }
     }
 
-    public bool IsDead()
-    {
-        //return _HP <= 0;
-       
-        return _HP <= 0;
-    }
-
     public void Die()
     {
         Debug.Log($"{gameObject.name} died.");
-        if (_HP <= 0)
-        {
 
+        if (EntityTeam == Team.Player)
+        {
+            //Set the player to dead.
+            SceneManager.LoadScene("Death scene");
+            //Disable movement
+            //Change the camera
+        }
+        else
+        {
             Destroy(this.gameObject);
         }
+
     }
 }

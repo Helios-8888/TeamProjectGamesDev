@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e0f477ca60f68ba45a9a41e18e8858a8
+timeCreated: 1529027642
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/eggplant.prefab
+  uploadId: 251993

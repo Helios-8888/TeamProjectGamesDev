@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8de559e31fcc2a14a93361b2d2c31f11
+timeCreated: 1529028180
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/DemoScene.unity
+  uploadId: 251993
