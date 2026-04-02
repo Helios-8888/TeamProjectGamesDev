@@ -3735,6 +3735,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2051397781}
     - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
+      propertyPath: VictoryText
+      value: 
+      objectReference: {fileID: 71839686}
+    - target: {fileID: 5990220068137203289, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: ShoppingListUI
       value: 
       objectReference: {fileID: 2141772896}
