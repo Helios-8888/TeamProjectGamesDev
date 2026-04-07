@@ -19,7 +19,7 @@ public class PowerUpSpeed : MonoBehaviour
     void Pickup(PlayerController player) 
     {
         Instantiate(pickupEffect, transform.position, transform.rotation);
-        player.currentSpeed *= speedIncrease;
+        player.CurrentSpeed *= speedIncrease;
         Destroy(gameObject);
     }
 }

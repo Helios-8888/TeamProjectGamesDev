@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b8022150d809cd9479855a6f7b5dbcfe
+timeCreated: 1528993703
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Materials/lambert11.mat
+  uploadId: 251993

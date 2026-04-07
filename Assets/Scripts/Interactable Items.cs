@@ -1,8 +1,8 @@
 using InteractableItems;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
-public class InteractableItem : MonoBehaviour, IInteractable
+public class InteractableItem : MonoBehaviour, IInteractable, IComparable<InteractableItem>
 {
     [SerializeField]
     string interactableMessage;
@@ -10,10 +10,17 @@ public class InteractableItem : MonoBehaviour, IInteractable
 
     public string itemName;
     public string interactableName => itemName;
+
+    public int ItemCost;
     public void Interact()
     {
         Debug.Log("Interacted with " + itemName);
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
+    }
+
+    public int CompareTo(InteractableItem otherItem)
+    {
+        return otherItem.itemName.CompareTo(itemName);
     }
 }

@@ -1,28 +1,88 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
-    public List<string> items = new List<string>();
+    public ItemDictionary Items;
+    public List<InteractableItem> PlayerInventory = new List<InteractableItem>();
+    public List<InteractableItem> ShoppingList = new List<InteractableItem>();
+    public List<TMP_Text> ShoppingListText = new List<TMP_Text>();  
+    private List<InteractableItem> _RemainingShoppingList = new List<InteractableItem>();
+    public int MaxShoppingItems = 3;
+    public void AddItem(InteractableItem item)
+    {
+        PlayerInventory.Add(Items.SearchForItem(item.itemName));
+        PlayerInventory.Sort();
+        Debug.Log(item.itemName + "added to inventory.");
+        UpdateShoppingList(item);
 
-    public void AddItem(string itemName)
-    {
-        items.Add(itemName);
-        Debug.Log(itemName + "added to inventory.");
     }
-    public void RemoveItem(string itemName)
+
+    private void UpdateShoppingList(InteractableItem item)
     {
-        if (items.Contains(itemName))
+        InteractableItem tempItem = Items.SearchForItem(item.itemName);
+        if (_RemainingShoppingList.Contains(tempItem))
         {
-            items.Remove(itemName);
-            Debug.Log(itemName + " removed from inventory.");
+            _RemainingShoppingList.Remove(tempItem);
+
+            _RemainingShoppingList.Sort();
+            for (int i = 0; i < ShoppingList.Count; i++)
+            {
+                if (i<_RemainingShoppingList.Count)
+                {
+                    ShoppingListText[i].text = _RemainingShoppingList[i].name;
+                }
+                else
+                {
+                    ShoppingListText[i].text = " ";
+                }
+            }
+            Debug.Log($"Player collected {tempItem.itemName} on shopping list");
+
+            if (_RemainingShoppingList.Count == 0)
+            {
+                Debug.Log($"Player collected all items on Shopping list.");
+            }
+        }
+    }
+
+    public void RemoveItem(InteractableItem item)
+    {
+        if (PlayerInventory.Contains(item))
+        {
+            PlayerInventory.Remove(item);
+            Debug.Log(item.itemName + " removed from inventory.");
         }
     }
     public void ShowInventory()
     {
-        Debug.Log("Inventory: " + string.Join(", ", items));
+        foreach (var item in PlayerInventory)
+        {
+            Debug.Log($"Item: {item.itemName} /n");
+        }
+    }
+
+    public void GenerateShoppingList(Store store)
+    {
+        ShoppingList.Clear();
+        _RemainingShoppingList.Clear();
+        for (int i = 0; i < MaxShoppingItems; i++)
+        {
+            InteractableItem item = store.ObtainableItems[Random.Range(0, store.ObtainableItems.Count)];
+            ShoppingList.Add(item);
+            _RemainingShoppingList.Add(Items.SearchForItem(item.itemName));
+            
+        }
+
+        ShoppingList.Sort();
+        _RemainingShoppingList.Sort();
+
+        for (int i = 0; i < _RemainingShoppingList.Count; i++)
+        {
+            ShoppingListText[i].text = _RemainingShoppingList[i].name;
+        }
+
     }
 }
 

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d80412aba14b993449ac562851f4699f
+timeCreated: 1528993704
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Materials/pine.mat
+  uploadId: 251993

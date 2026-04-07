@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ae170815a0e3bdb4da41d86b4df639f6
+timeCreated: 1529027619
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 121265
+  packageName: Simple Kitchen Probs
+  packageVersion: 1.0
+  assetPath: Assets/Simple Kitchen Probs/Prefabs/ketchup.prefab
+  uploadId: 251993

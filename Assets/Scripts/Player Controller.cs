@@ -1,77 +1,111 @@
-using InteractableItems;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
 {
+    [Header ("Entity Health")]
+    private EntityHealth _Health;
 
     [Header("Movement")]
     private Rigidbody _RB;
     private Vector2 _InputDir;
     private Vector3 _ViewDir;
-    public bool Grounded;
-    public float MoveSpeed;
-    public float currentSpeed;
-    public float JumpForce;
-    public float GroundFriction = 5f;
+
+    [Header("Physics Variables")]
+    public bool Grounded; //True if the player is on the ground
+    public bool HasShoppingTrolley; // True if the player has the Shopping Trolley equipped.
+    public float CurrentSpeed = 0f;
+    public float WalkSpeed = 2f;
+    public float TrolleySpeed = 1.5f;
+    public float JumpForce = 5f;
+    public float WalkingFriction = 5f;
+    public float TrolleyFriction = 3f;
     public float AirFriction = 0f;
+
+    [Header("Attach in Inspector")]
     public Transform CameraTransform;
-    [SerializeField]
-    Camera playerCamera;
+    public Bullet Bullet;
+    public Transform bulletspawn;
+    public GameObject TrolleyPrefab;
+    public Transform TrolleyAttachment;
+    public PlayerData PlayerData;
+    public ShoppingListUI ShoppingListUI;
+    public TMP_Text VictoryText;
 
-    [SerializeField]
-    TextMeshProUGUI interactableText;
+    [Header("Inventory Items")]
+    public InteractableItem currentTargetedInteractable;
 
-    [SerializeField]
-    float interactbaleDistance = 5f;
-
-    IInteractable currentTargetedInteractable;
-
-    Inventory playerInventory;
+    [Header("Animator controller")]
+    public Animator _anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     void Start()
     {
-        _RB = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        playerInventory = GetComponent<Inventory>();    
-        currentSpeed = MoveSpeed;
+
+        _RB = GetComponent<Rigidbody>();
+        _Health = GetComponent<EntityHealth>();
+        PlayerData = GetComponent<PlayerData>();
+        PlayerData.SetupPlayerData();
+
+        CurrentSpeed = WalkSpeed;
+        _anim = GetComponent<Animator>();
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        UpdateCurrentInteractable();
-
-        UpdateInteractableText();
-
-        if (Grounded)
+        if (_Health.HP>0)
         {
-            _RB.linearDamping = GroundFriction; //When grounded apply friction to the player
-        }
-        else
-        {
-            _RB.linearDamping = AirFriction; //When airborne reduce friction to a lower value
-        }
+            if (Grounded)
+            {
+                //When grounded apply friction to the player
+                if (HasShoppingTrolley)
+                {
+                    _RB.linearDamping = TrolleyFriction; //Less friction when shopping Trolley Equipped
+                }
+                else
 
-        //Adjust player rotation with look direction
-        Vector3 vectorBetween = transform.position - CameraTransform.position;
-        float angle = Mathf.Acos(Vector3.Dot(Vector3.forward, vectorBetween.normalized)) * Mathf.Rad2Deg;
-        if (vectorBetween.x < 0)
-        {
-            angle *= -1;
+                {
+                    _RB.linearDamping = WalkingFriction; //More Friction when walking normally
+                }
+            }
+            else
+            {
+                _RB.linearDamping = AirFriction; //Player is frictionless when airborne
+            }
+
+            //Adjust player rotation with look direction 
+            float CameraYAngle = CameraTransform.rotation.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0, CameraYAngle, 0);
+
+            //animation logic 
+            float speed = _RB.linearVelocity.magnitude;
+            _anim.SetFloat("Speed", speed);
+            _anim.SetBool("isGrounded", Grounded);
+            
         }
-        Quaternion rotation = Quaternion.Euler(0, angle, 0);
-        transform.rotation = rotation;
     }
 
     private void FixedUpdate()
     {
-        if (Grounded)
+        if (_Health.HP > 0)
         {
-            MovePlayer(_InputDir);
+            if (Grounded)
+            {
+                MovePlayer(_InputDir);
+            }
         }
     }
 
@@ -79,7 +113,7 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     {
         Vector3 movementDirection = CameraTransform.forward * direction.y + CameraTransform.right * direction.x;
         movementDirection.y = 0;
-        _RB.AddForce(movementDirection * currentSpeed, ForceMode.VelocityChange); //Do not directly modify velocity. Rb.Add Force is much better as long as you change the friction values (as I did above)
+        _RB.AddForce(movementDirection * CurrentSpeed, ForceMode.VelocityChange); //Do not directly modify velocity. Rb.Add Force is much better as long as you change the friction values (as I did above)
     
     }
 
@@ -97,59 +131,97 @@ public class PlayerController : MonoBehaviour, Supermarket.IPlayerActions
     public void OnAttack(InputAction.CallbackContext context)
     {
         //Just for testing
-        if (context.performed)
+        if (context.performed && _Health.HP > 0)
         {
-            if (TryGetComponent<EntityHealth>(out EntityHealth health))
+            if (Bullet != null )
             {
-                health.DamageHP(15);
+                Bullet bulletInstance = Instantiate(Bullet, bulletspawn.position + CameraTransform.forward *2f, Quaternion.identity);
+                bulletInstance.ShootBullet(CameraTransform.forward, _Health);
+                
             }
-        }
+            else
+                {
+                    Debug.LogError("Bullet prefab is not assigned or has been destroyed.");
+                }
+           
+            
+            
+            
+                
+            
+       }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.started && currentTargetedInteractable != null)
+        if (context.started)
         {
-            currentTargetedInteractable.Interact();
-            playerInventory.AddItem(currentTargetedInteractable.interactableName);
+            if (_Health.HP > 0)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(bulletspawn.position, CameraTransform.forward, out hit, 5f))
+                {
+                    Debug.DrawRay(bulletspawn.position, CameraTransform.forward * 5f, Color.blue);
+                    if (hit.collider.gameObject.TryGetComponent<InteractableItem>(out InteractableItem item))
+                    {
+                        currentTargetedInteractable = item;
+                        if (PlayerData.Pennies >= item.ItemCost)
+                        {
+                            PlayerData.PlayerInventory.AddItem(currentTargetedInteractable);
+                            Debug.Log(item.itemName);
+                            PlayerData.Pennies -= item.ItemCost;
+                            if (item.itemName == "Shopping Trolley")
+                            {
+                                HasShoppingTrolley = true;
+                                GameObject newTrolley = Instantiate(TrolleyPrefab, TrolleyAttachment.position, transform.rotation);
+                                newTrolley.transform.parent = bulletspawn;
+                                CurrentSpeed = TrolleySpeed;
+                            }
+                            Destroy(item.gameObject);
+                        }
+                        else
+                        {
+                            Debug.Log($"Can't afford the current item: {item.itemName} ({PlayerData.Pennies} / {item.ItemCost})");
+                        }
+                        item.Interact();
+                    }
+
+                }
+            }
+            else
+            {
+                SceneManager.LoadScene("Main"); //Change to the main menu scene
+            }
+            
         }
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _Health.HP >0)
         {
             Debug.Log("Jump Pressed");
             if (Grounded)
             {
-                _RB.AddForce(Vector3.up * JumpForce, ForceMode.VelocityChange);
+                if ( HasShoppingTrolley)
+                {
+                    //Release the shoppping trolley? Could also just prevent jumping
+                }
+                else
+                {
+                    //Allow player to jump when not holding the shoppping trolley
+                    _RB.AddForce(Vector3.up * JumpForce, ForceMode.VelocityChange);
+
+                    //animation trigger
+                    _anim.SetTrigger("Jump");
+                    _anim.SetBool("isGrounded", false);
+
+                }
 
             }
         }
     }
-    void UpdateCurrentInteractable()
-    {
-        var ray = playerCamera.ViewportPointToRay(new Vector2(0.5f, 0.5f));
-
-        Physics.Raycast(ray, out var hit, interactbaleDistance);
-
-        currentTargetedInteractable = hit.collider?.GetComponent<IInteractable>();
-
-    }
-
-    void UpdateInteractableText()
-    {
-        if (currentTargetedInteractable == null)
-        {
-            interactableText.text = string.Empty;
-            return;
-        }
-
-        interactableText.text = currentTargetedInteractable.InteractableMessage;
-    }
-
-
-public void OnCrouch(InputAction.CallbackContext context)
+    public void OnCrouch(InputAction.CallbackContext context)
     {
     }
 
@@ -186,6 +258,15 @@ public void OnCrouch(InputAction.CallbackContext context)
         if (collision.gameObject.layer == 6)
         {
             Grounded = false;
+        }
+    }
+
+    public void OnOpenShoppingList(InputAction.CallbackContext context)
+    {
+        if (context.started && _Health.HP > 0)
+        {
+            Debug.Log("Shopping list toggled"); 
+            ShoppingListUI.Toggle();
         }
     }
 }
