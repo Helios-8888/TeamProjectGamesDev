@@ -20,7 +20,15 @@ public class PowerUpHeal : MonoBehaviour
             }
         }
 
-        void Pickup(Collider player)
+        // Fixed: compare the instance field `MaxHP` (not the type) and remove the stray semicolon.
+        // If MaxHP is null, mark this pickup to persist across scene loads.
+        if (MaxHP != null)
+        {
+            UnityEngine.Object.DontDestroyOnLoad(gameObject);
+        }   
+    }
+
+    void Pickup(Collider player)
         {
             Instantiate(pickupEffect, transform.position, transform.rotation);
 
@@ -29,12 +37,4 @@ public class PowerUpHeal : MonoBehaviour
 
             Destroy(gameObject);
         }
-
-        // Fixed: compare the instance field `MaxHP` (not the type) and remove the stray semicolon.
-        // If MaxHP is null, mark this pickup to persist across scene loads.
-        if (MaxHP != null)
-        {
-            UnityEngine.Object.DontDestroyOnLoad(gameObject);
-        }   
-    }
 }
