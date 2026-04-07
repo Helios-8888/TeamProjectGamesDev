@@ -16,7 +16,9 @@ public class EntityHealth : MonoBehaviour
     {
         get {  return _HP; }
     }
-  
+
+    public static int health { get; internal set; }
+
     private void Start()
     {
         _HP = MaxHP;
