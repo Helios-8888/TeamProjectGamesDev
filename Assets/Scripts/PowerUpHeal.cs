@@ -1,40 +1,38 @@
-using System;
 using UnityEngine;
 
 public class PowerUpHeal : MonoBehaviour
 {
-    public int healAmount = (int)20f;
+    public int healAmount = 20;
 
-    public GameObject pickupEffect;
-
-    public GameObject pickupHeal;
+    public GameObject pickupEffect; //Attach some sort of vfx to this
     private PlayerHealthbar MaxHP;
+    //public GameObject pickupHeal; unused variable
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if(other.TryGetComponent<PlayerHealthbar>(out PlayerHealthbar playerHealth))
+            //This doesn't seem right
+            /*
+            if (MaxHP != null)
             {
-                Pickup(other);
+                DontDestroyOnLoad(MaxHP.gameObject);
+            }
+            */
+
+            if (other.TryGetComponent<EntityHealth>(out EntityHealth playerHealth))
+            {
+                Pickup(playerHealth);
             }
         }
 
-        // Fixed: compare the instance field `MaxHP` (not the type) and remove the stray semicolon.
-        // If MaxHP is null, mark this pickup to persist across scene loads.
-        if (MaxHP != null)
-        {
-            UnityEngine.Object.DontDestroyOnLoad(gameObject);
-        }   
     }
 
-    void Pickup(Collider player)
-        {
-            Instantiate(pickupEffect, transform.position, transform.rotation);
+    void Pickup(EntityHealth player)
+    {
+        Instantiate(pickupEffect, transform.position, transform.rotation);
+        player.HealHP(healAmount);
 
-            PlayerData data = player.GetComponent<PlayerData>();
-            data.PlayerHealth.HealHP(Mathf.RoundToInt(healAmount));
-
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
+    }
 }
