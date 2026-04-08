@@ -3527,6 +3527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 7991268290654277581, guid: 8dd10399d8e561748a47970272b148bc, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 0babe6c02a48c1840947d0c6d714e111, type: 3}
     - target: {fileID: 8975733411922348671, guid: 8dd10399d8e561748a47970272b148bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7894466
@@ -3724,6 +3728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4867352418825649418, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
+      propertyPath: VictoryText
+      value: 
+      objectReference: {fileID: 71839686}
     - target: {fileID: 4867352418825649418, guid: 91f96dc0f51f61f47b3a4fce526e5602, type: 3}
       propertyPath: 'ShoppingListText.Array.data[0]'
       value: 

@@ -10,8 +10,12 @@ public class Inventory : MonoBehaviour
     public List<TMP_Text> ShoppingListText = new List<TMP_Text>();  
     private List<InteractableItem> _RemainingShoppingList = new List<InteractableItem>();
     public int MaxShoppingItems = 3;
+    public TMP_Text VictoryText;
+
+
     public void AddItem(InteractableItem item)
     {
+
         PlayerInventory.Add(Items.SearchForItem(item.itemName));
         PlayerInventory.Sort();
         Debug.Log(item.itemName + "added to inventory.");
@@ -43,6 +47,7 @@ public class Inventory : MonoBehaviour
             if (_RemainingShoppingList.Count == 0)
             {
                 Debug.Log($"Player collected all items on Shopping list.");
+                VictoryText.text = "YOU WIN";
             }
         }
     }
@@ -65,6 +70,7 @@ public class Inventory : MonoBehaviour
 
     public void GenerateShoppingList(Store store)
     {
+        VictoryText.text = null;
         ShoppingList.Clear();
         _RemainingShoppingList.Clear();
         for (int i = 0; i < MaxShoppingItems; i++)
