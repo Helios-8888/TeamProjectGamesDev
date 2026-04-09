@@ -35,7 +35,8 @@ public class EnemyRangedAttack : MonoBehaviour
             Vector3 dir = (player.position - firePoint.position).normalized;
             Bullet proj = Instantiate(Bullet, firePoint.position, Quaternion.LookRotation(dir)); // spawn the bullet and rotate towards the player
             proj.ShootBullet(dir, health);
-
+            //Send a message to the animator
+            EnemyAnimator.SetTrigger("Shoot");
         }
         
     }

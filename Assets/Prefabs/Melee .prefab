@@ -236,6 +236,7 @@ MonoBehaviour:
   attackRange: 2
   damage: 10
   cooldown: 1
+  EnemyAnimator: {fileID: 2809465976795294656}
 --- !u!1001 &4428375720267225379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -373,6 +374,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d098f94cae96344a617f6155796611, type: 3}
+--- !u!95 &2809465976795294656 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1984392173307818723, guid: b9d098f94cae96344a617f6155796611, type: 3}
+  m_PrefabInstance: {fileID: 4428375720267225379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5903432176605229362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7825554143674918929, guid: b9d098f94cae96344a617f6155796611, type: 3}

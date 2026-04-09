@@ -6,6 +6,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     public float damage = 10f;
     public float cooldown = 1f;
 
+    public Animator EnemyAnimator;
     Transform Player;
     float nextTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,6 +30,8 @@ public class EnemyMeleeAttack : MonoBehaviour
 
                     var hp = Player.GetComponent<EntityHealth>();
                     if (hp) hp.DamageHP((int)damage);
+                    EnemyAnimator.SetTrigger("Melee");
+                    //Stop moving?
                 }
             }
         }

@@ -236,6 +236,7 @@ MonoBehaviour:
   attackRange: 2
   damage: 30
   cooldown: 1
+  EnemyAnimator: {fileID: 1805085716213234413}
 --- !u!1001 &8367196911377201829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,6 +255,14 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 1af4f70be4ac4084ba0c9ca686023b39, type: 2}
     - target: {fileID: -1363831305260285880, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
       propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 531174638083100521, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736635073866958820, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4076005472781163870, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
@@ -352,6 +361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chef02
       objectReference: {fileID: 0}
+    - target: {fileID: 6262027922009529721, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8285154270626899465, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -384,11 +397,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.568
       objectReference: {fileID: 0}
+    - target: {fileID: 8577213392873589893, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
+--- !u!95 &1805085716213234413 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -1363831305260285880, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
+  m_PrefabInstance: {fileID: 8367196911377201829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3639343697988300769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5089008814553044292, guid: 83cf704b769c0054d8c1bccf82ae999a, type: 3}
