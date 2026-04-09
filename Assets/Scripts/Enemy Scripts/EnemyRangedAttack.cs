@@ -8,6 +8,7 @@ public class EnemyRangedAttack : MonoBehaviour
     public float fireCooldown = 1.2f; // how long the enemy waits between each shot
     public float projectileSpeed = 12f;
     public float shootRange; // maximum distance the enemy can shoot the player
+    public Animator EnemyAnimator;
 
     Transform player;
     float nextTime;
@@ -35,9 +36,6 @@ public class EnemyRangedAttack : MonoBehaviour
             Bullet proj = Instantiate(Bullet, firePoint.position, Quaternion.LookRotation(dir)); // spawn the bullet and rotate towards the player
             proj.ShootBullet(dir, health);
 
-            //I'm sorry Andrew but I'm making it so that the enemies fire the bullet the same way as the player
-            //var rb = proj.GetComponent<Rigidbody>();
-            //if (rb) rb.linearVelocity = dir * projectileSpeed; // apply velocity to the rigid body so the bullet moves forward.
         }
         
     }
