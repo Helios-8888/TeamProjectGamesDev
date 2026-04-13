@@ -33,10 +33,12 @@ public class EntityHealth : MonoBehaviour
         {
             //Update the healthbar
             data.PlayerHealthbar.SetHealth(_HP);
+            //Ideally send a message to the animator
         }
         if (_HP <= 0)
         {
             Die();
+
         }
     }
 
@@ -57,7 +59,7 @@ public class EntityHealth : MonoBehaviour
     public void Die()
     {
         Debug.Log($"{gameObject.name} died.");
-
+        //Ideally send a message to the animator
         if (EntityTeam == Team.Player)
         {
             //Set the player to dead.
