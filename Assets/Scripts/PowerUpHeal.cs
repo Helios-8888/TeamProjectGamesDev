@@ -5,26 +5,26 @@ public class PowerUpHeal : MonoBehaviour
     public int healAmount = 20;
 
     public GameObject pickupEffect; //Attach some sort of vfx to this
-
-    //public GameObject pickupHeal; unused variable
+    private PlayerHealthbar MaxHP;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if(other.TryGetComponent<EntityHealth>(out EntityHealth playerHealth))
+            if (other.TryGetComponent<EntityHealth>(out EntityHealth playerHealth))
             {
-                Pickup(playerHealth);
+                Pickup(other);
             }
         }
 
-    }
+        void Pickup(Collider player)
+        {
+            Instantiate(pickupEffect, transform.position, transform.rotation);
 
-    void Pickup(EntityHealth player)
-    {
-        Instantiate(pickupEffect, transform.position, transform.rotation);
-        player.HealHP(healAmount);
+            PlayerData data = player.GetComponent<PlayerData>();
+            data.PlayerHealth.HealHP(Mathf.RoundToInt(healAmount));
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

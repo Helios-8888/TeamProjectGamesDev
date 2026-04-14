@@ -38,10 +38,14 @@ public class EnemyAIController : MonoBehaviour
     private Vector3 lastSeenPosition;
     private float searchTimer = 0f;
 
-    private void Awake()
+    private Animator animator; 
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        animator = GetComponentInChildren<Animator>(); 
 
         if (!player)
         {
@@ -107,6 +111,10 @@ public class EnemyAIController : MonoBehaviour
         if (patrolPoints == null || patrolPoints.Length == 0)
         {
             //Idle
+            if (animator)
+            {
+                animator.SetFloat("Speed", 0f);
+            }
             return;
         }
 
@@ -214,6 +222,12 @@ public class EnemyAIController : MonoBehaviour
         rb.AddForce(vel, ForceMode.VelocityChange); //Do not directly modify velocity. Rb.Add Force is much better as long as you change the friction values (as I did above)
 
         //rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
+
+        //Animations
+        if (animator)
+        {
+            animator.SetFloat("Speed", speed);
+        }
     }
 
 
