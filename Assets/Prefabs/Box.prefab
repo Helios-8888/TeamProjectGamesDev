@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd5fdca33e0d504aa91e5cf73e9227c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableMessage: Box Collected
-  itemName: Box
+  interactableMessage: Kiwi
+  itemName: Kiwi
   ItemCost: 0
 --- !u!1001 &6995253349989044820
 PrefabInstance:
